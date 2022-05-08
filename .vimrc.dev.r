@@ -59,7 +59,7 @@
 "
 " - yarn
 "   ```
-"   npm install --global yarn
+"   npm install --global yarn prettier
 "   ```
 "
 " - clangd
@@ -411,7 +411,7 @@ let g:vimspector_terminal_maxwidth = 50
 let g:vimspector_bottombar_height = 10
 
 nmap <F3> :call vimspector#Launch()<CR>
-nmap <S-F3> :call vimspector#Restart()<CR>
+nmap <S-F4> :call vimspector#Restart()<CR>
 nmap <F4> :call vimspector#Reset()<CR>
 
 nmap <F5> :call vimspector#ToggleBreakpoint()<CR>

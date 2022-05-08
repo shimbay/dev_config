@@ -1,0 +1,14 @@
+{
+  "python.pythonPath": "python3",
+  "clangd.enabled": true,
+  "clangd.path": "$WORKSPACE/bin/llvm/bin/clangd",
+  "clangd.arguments": ["--query-driver=/usr/bin/g++", "--background-index"],
+  "semanticTokens.filetypes": ["*"],
+  "diagnostic.checkCurrentLine": true,
+  "snippets.userSnippetsDirectory": "$HOME/.config/snippet",
+  "list.source.files.command": "git",
+  "list.source.files.args": ["ls-files", "--recurse-submodules"],
+  "list.source.grep.command": "rg",
+  "list.source.grep.args": ["-i"],
+  "list.source.grep.useLiteral": false
+}

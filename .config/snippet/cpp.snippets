@@ -1,0 +1,182 @@
+snippet main "..."
+int main() {
+	${0}
+}
+endsnippet
+
+snippet enum "..." b
+typedef enum {
+	${0} = 0,
+} ${1};
+endsnippet
+
+snippet stt "..."
+typedef struct ${1} {
+	${0}
+} ${1};
+endsnippet
+
+snippet st "..."
+class ${1:ClassName} {
+public:
+	${0}
+};
+endsnippet
+
+snippet interface "..."
+class ${1:ClassName} {
+public:
+	virtual ${0} = 0;
+
+	virtual ~${1}() = default;
+};
+endsnippet
+
+snippet cls "..."
+class ${1:ClassName} {
+public:
+	$1() = default;
+
+	~$1() = default;
+
+private:
+	${0}
+};
+endsnippet
+
+snippet test "..."
+class ${1:ClassName} : public ::testing::Test {
+public:
+	static void SetUpTestSuite() { }
+
+	static void TearDownTestSuite() { }
+};
+endsnippet
+
+snippet testf "..."
+TEST_F(${1:TestName}, ${2:CaseName}) {
+	${0}
+}
+endsnippet
+
+snippet bm "..."
+static void BM_${1:Name}(benchmark::State &state) {
+	for (auto _ : state) {
+		${0}
+	}
+}
+
+BENCHMARK(BM_${1});
+endsnippet
+
+snippet bmarg "..."
+static void Arg_${1:Name}(benchmark::internal::Benchmark *b) {
+	b = b->Args({${0}});
+}
+endsnippet
+
+snippet fn "..."
+${1:void} ${2:Name}(${3}) {
+	${0}
+}
+endsnippet
+
+snippet std "..." i
+std::${0}
+endsnippet
+
+snippet str "..." i
+std::string ${0}
+endsnippet
+
+snippet cout "..."
+std::cout << ${0} << std::endl;
+endsnippet
+
+snippet nv "..."
+std::vector<${1:TypeName}> ${0};
+endsnippet
+
+snippet ns "..."
+namespace ${1} {
+
+${0}
+
+} // namespace $1
+endsnippet
+
+snippet uns "..."
+using namespace ${0};
+endsnippet
+
+snippet nshr "..."
+auto ${1:VarName} = std::make_shared<${2:TypeName}>(${0});
+endsnippet
+
+snippet mshr "..."
+std::make_shared<${1:TypeName}>(${0});
+endsnippet
+
+snippet uniq "..."
+std::unique_ptr<${0}>
+endsnippet
+
+snippet nuniq "..."
+auto ${1:VarName} = std::make_unique<${2:TypeName}>(${0});
+endsnippet
+
+snippet muniq "..."
+std::make_unique<${1:TypeName}>(${0});
+endsnippet
+
+snippet once "..."
+std::call_once(${1:Flag}, ${0});
+endsnippet
+
+snippet pri "..."
+printf("${0}\n");
+endsnippet
+
+snippet opr "..."
+void operator${1:Opr}(${2}) const {
+	${0}
+}
+endsnippet
+
+snippet lambda "..." i
+[${1:=}](${2}) -> ${3} {
+	${0}
+}
+endsnippet
+
+snippet memset "" b
+memset(&${1:Var}, 0, sizeof(${1}));
+endsnippet
+
+snippet cmt "..." i
+/**
+ * ${0}
+ */
+endsnippet
+
+snippet bri "..." i
+\brief ${0}
+endsnippet
+
+snippet pragonce "#pragma once" b
+#pragma once
+endsnippet
+
+snippet cppext "cpp extern c" b
+#ifdef __cplusplus
+extern "C" {
+#endif
+
+${0}
+
+#ifdef __cplusplus
+}
+#endif
+endsnippet
+
+

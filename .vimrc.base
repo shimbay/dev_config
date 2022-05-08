@@ -1,0 +1,121 @@
+" Steps:
+" - workspace
+"   ```
+"   mkdir -p $WORKSPACE/bin $WORKSPACE/dev $WORKSPACE/lib $WORKSPACE/include $WORKSPACE/src $WORKSPACE/script $WORKSPACE/data
+"   ```
+" - nvim
+"   ```
+"   https://github.com/neovim/neovim/releases/tag/stable
+"
+"   rm -rf $WORKSPACE/bin/nvim-linux64 && wget -O - https://github.com/neovim/neovim/releases/download/stable/nvim-linux64.tar.gz | tar -zxvf - -C $WORKSPACE/bin
+"   ln -s $WORKSPACE/bin/nvim-linux64/bin/nvim $WORKSPACE/bin/nvim
+"   ln -s $WORKSPACE/bin/nvim $WORKSPACE/bin/vim
+"   ```
+"
+" - nvim setup 
+"   ```
+"   mkdir -p $HOME/.vim/backup $HOME/.vim/swap $HOME/.vim/undo $HOME/.vim/pack
+"   ```
+
+let mapleader="f"
+
+hi Comment ctermfg=blue
+
+filetype plugin indent on
+syntax on
+
+" :options
+set nu
+set wrap
+set noro
+set autoread
+set hlsearch
+set showmatch
+set expandtab
+set autoindent
+set cursorline
+set ignorecase
+set nocompatible
+set splitbelow
+set cmdheight=1
+set tabstop=2
+set shiftwidth=2
+set encoding=utf-8
+set pastetoggle=<leader>p
+set backspace=indent,eol,start
+set ttimeoutlen=5
+set timeoutlen=500
+set signcolumn=number
+
+set backupdir=~/.vim/backup//
+set directory=~/.vim/swap//
+set undodir=~/.vim/undo//
+
+if has("nvim")
+  set completeopt=menuone
+  set updatetime=300
+  set hidden
+  set shortmess+=c
+  set pumwidth=5
+  set jumpoptions+=stack
+  au BufEnter * if &buftype == 'terminal' | :startinsert | endif
+endif
+
+" 光标随插入模式改变
+if has("autocmd")
+  au VimEnter,InsertLeave * silent execute '!echo -ne "\e[2 q"' | redraw!
+  au InsertEnter,InsertChange *
+    \ if v:insertmode == 'i' |
+    \   silent execute '!echo -ne "\e[6 q"' | redraw! |
+    \ elseif v:insertmode == 'r' |
+    \   silent execute '!echo -ne "\e[4 q"' | redraw! |
+    \ elseif v:insertmode == 't' |
+    \   silent execute '!echo -ne "\e[4 q"' | redraw! |
+    \ endif
+  au VimLeave * silent execute '!echo -ne "\e[ q"' | redraw!
+endif
+
+nnoremap <silent> 1 :tabp<CR>
+nnoremap <silent> 2 :tabn<CR>
+nnoremap <silent> 3 :tabnew<CR>
+
+map ; :w<CR>
+map <silent> q :close<CR>
+map <silent> Q :qa<CR>
+
+nnoremap u :undo<CR>
+nnoremap U :redo<CR>
+
+nnoremap <silent> t :vs<CR> \| <C-w>l
+nnoremap <silent> - :sp<CR>
+nnoremap <silent> c :match \| nohl<CR>
+
+nnoremap <silent> <leader>v :match Search '<C-r><C-w>'<CR>
+nnoremap <silent> <leader>V /<C-r><C-w><CR>
+nnoremap <silent> <leader>q :only<CR>
+nnoremap <silent> <leader>j :jumps<CR>
+nnoremap <silent> <leader>m :messages<CR>
+
+nnoremap <silent> <C-l> <C-w>l
+nnoremap <silent> <C-h> <C-w>h
+inoremap <silent> <C-l> <ESC><C-w>l
+inoremap <silent> <C-h> <ESC><C-w>h
+nnoremap <silent> <C-k> <C-w>k
+nnoremap <silent> <C-j> <C-w>j
+
+tnoremap <Esc> <C-\><C-n>
+tnoremap <C-h> <C-\><C-n><C-w>h
+tnoremap <C-j> <C-\><C-n><C-w>j
+tnoremap <C-k> <C-\><C-n><C-w>k
+tnoremap <C-l> <C-\><C-n><C-w>l
+
+nnoremap <silent> <esc>oa <UP>
+nnoremap <silent> <esc>ob <DOWN>
+nnoremap <silent> <esc>oc <RIGHT>
+nnoremap <silent> <esc>od <LEFT>
+inoremap <silent> <esc>oa <UP>
+inoremap <silent> <esc>ob <DOWN>
+inoremap <silent> <esc>oc <RIGHT>
+inoremap <silent> <esc>od <LEFT>
+
+noremap <F12> :source ~/.vimrc<CR>

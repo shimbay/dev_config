@@ -1,0 +1,22 @@
+[user]
+	name = sunyunbo
+	email = sunyunbo@axera-tech.com
+
+[filter "lfs"]
+	process = git-lfs filter-process
+	required = true
+	clean = git-lfs clean -- %f
+	smudge = git-lfs smudge -- %f
+
+[url "git@git-pd.megvii-inc.com:"]
+    insteadOf = https://git-pd.megvii-inc.com/
+	
+[url "git@git-core.megvii-inc.com:"]
+    insteadOf = https://git-core.megvii-inc.com/
+
+[color]
+	ui = auto
+
+[core]
+	editor = vim
+	pager = less -

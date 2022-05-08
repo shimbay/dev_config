@@ -1,0 +1,61 @@
+snippet pri "..." i
+println!("${0}");
+endsnippet
+
+snippet std "..."
+std::${0}
+endsnippet
+
+snippet mr "..."
+&mut ${0}
+endsnippet
+
+snippet v "..."
+let mut ${1:Name}: ${2} = ${0};
+endsnippet
+
+snippet av "..."
+let mut ${1:Name} = ${0};
+endsnippet
+
+snippet c "..."
+let ${1:Name}: ${2} = ${0};
+endsnippet
+
+snippet ac "..."
+let ${1:Name} = ${0};
+endsnippet
+
+snippet str "..." i
+String
+endsnippet
+
+snippet stt "..."
+pub struct ${1:Name} {
+	${0}
+}
+endsnippet
+
+snippet trt "..."
+pub trait ${1:Name} {
+	${0}
+}
+endsnippet
+
+snippet res "..."
+Result<${VarType}, io::Error>
+endsnippet
+
+snippet err "..."
+match ${1:Var} {
+	Ok(v) => ${2:Value},
+	Err(err) => ${0},
+};
+endsnippet
+
+snippet mat "..."
+match ${1:Var} {
+	${2:Case} => ${0},
+	_ => ,
+}
+endsnippet

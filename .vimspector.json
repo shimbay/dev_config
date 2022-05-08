@@ -1,0 +1,87 @@
+{
+    "adapters": {
+        "cpptools-remote": {
+            "command": [
+                "${gadgetDir}/vscode-cpptools/debugAdapters/bin/OpenDebugAD7"
+            ],
+            "name": "cppdbg",
+            "configuration": {
+                "type": "cppdbg"
+            },
+            "launch": {
+                "remote": {
+                    "host": "debug",
+                    "runCommand": [
+                        "gdbserver",
+                        "--once",
+                        "--no-startup-with-shell",
+                        "0.0.0.0:${port}",
+                        "%CMD%"
+                    ]
+                }
+            }
+        }
+    },
+    "configurations": {
+        "C/C++": {
+            "adapter": "vscode-cpptools",
+            "configuration": {
+                "request": "launch",
+                "type": "cppdbg",
+                "cwd": "${workspaceRoot}",
+                "program": "${workspaceRoot}/to/binary",
+                "args": [],
+                "environment": [],
+                "stopAtEntry": true,
+                "externalConsole": true,
+                "MIMode": "gdb",
+                "breakpointers": {
+                    "exception": {
+                        "cpp_throw": "Y",
+                        "cpp_catch": "N"
+                    }
+                },
+                "setupCommands": [{
+                    "description": "Enable pretty-printing for gdb",
+                    "text": "-enable-pretty-printing",
+                    "ignoreFailures": true
+                }]
+            }
+        },
+        "C/C++ Remote Launch": {
+            "adapter": "cpptools-remote",
+            "remote-cmdLine": ["/path/to/remove/binary"],
+            "remote-request": "launch",
+            "configuration": {
+                "request": "launch",
+                "cwd": "${workspaceRoot}",
+                "program": "${workspaceRoot}/to/local/binary",
+                "stopAtEntry": true,
+                "externalConsole": true,
+                "MIMode": "gdb",
+                "miDebuggerAddress": "debug:${port}"
+            }
+        },
+        "Python": {
+            "adapter": "debugpy",
+            "configuration": {
+                "request": "launch",
+                "type": "python",
+                "cwd": "${workspaceRoot}",
+                "program": "${workspaceRoot}/main.py",
+                "args": [],
+                "environment": [],
+                "stopOnEntry": true,
+                "console": "integratedTerminal",
+                "justMyCode": false
+            },
+            "breakpoints": {
+                "exception": {
+                    "raised": "N",
+                    "uncaught": "",
+                    "userUnhandled": ""
+                }
+            }
+        }
+    }
+}

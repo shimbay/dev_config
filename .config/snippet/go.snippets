@@ -1,0 +1,157 @@
+snippet ; "..." i
+:= 
+endsnippet
+
+snippet st "..."
+type ${1:Name} struct {
+	${0}
+}
+endsnippet
+
+snippet main "..."
+func main() {
+	${0}
+}
+endsnippet
+
+snippet init "..."
+func init() {
+	${0}
+}
+endsnippet
+
+snippet fn "..."
+func ${1:Name}(${2}) ${3} {
+	${0}
+}
+endsnippet
+
+snippet ifn "..."
+func (${4}) ${5} {
+	${0}
+}
+endsnippet
+
+snippet tfn "..."
+func (${1:t} *${2:Struct}) ${3:FuntionName}(${4}) ${5} {
+	${0}
+}
+endsnippet
+
+snippet gofn "..."
+go func(${1}) ${2} {
+	${0}
+}
+endsnippet
+
+snippet test "..."
+func Test${1:Name}(t *testing.T) {
+	${0}
+}
+endsnippet
+
+snippet s "..."
+[]${0}
+endsnippet
+
+snippet ns "..." i
+make([]${1:Type}, ${0:Size})
+endsnippet
+
+snippet m "..."
+map[${1:KeyType}]${0:ValueType}
+endsnippet
+
+snippet nm "..." i
+make(map[${1:KeyType}]${0:ValueType})
+endsnippet
+
+snippet nch "..." i
+make(chan ${1:ChanType}, ${0:ChanSize})
+endsnippet
+
+snippet nvar "..."
+var (
+	${0}
+)
+endsnippet
+
+snippet ncon "..."
+const (
+	${0}
+)
+endsnippet
+
+snippet str "..." i
+string
+endsnippet
+
+snippet v "..." i
+%+v
+endsnippet
+
+snippet fori "..."
+for i := 0; i < ${1:Var}; i++ {
+	${0}
+}
+endsnippet
+
+snippet itc "..."
+for item := range ${1:ChanName} {
+	${0}
+}
+endsnippet
+
+snippet its "..."
+for _, item := range ${1:SliceName} {
+	${0}
+}
+endsnippet
+
+snippet itm "..."
+for key, value := range ${1:MapName} {
+	${0}
+}
+endsnippet
+
+snippet err "..."
+if err != nil {
+	return err${0}
+}
+endsnippet
+
+snippet pri "..."
+fmt.Printf("${0}")
+endsnippet
+
+snippet sfmt "..."
+fmt.Sprintf("${1}", ${0})
+endsnippet
+
+snippet sec "..." i
+time.Second * ${0}
+endsnippet
+
+snippet ms "..." i
+time.Millisecond * ${0}
+endsnippet
+
+snippet sle "..." i
+time.Sleep(${0})
+endsnippet
+
+snippet infof "..."
+logrus.Infof("${0}")
+endsnippet
+
+snippet warnf "..."
+logrus.Warnf("${0}")
+endsnippet
+
+snippet errf "..."
+logrus.Errorf("${0}")
+endsnippet
+
+snippet fatalf "..."
+logrus.Fatalf("${0}")
+endsnippet

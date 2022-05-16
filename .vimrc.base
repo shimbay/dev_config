@@ -95,6 +95,7 @@ nnoremap <silent> <leader>V /<C-r><C-w><CR>
 nnoremap <silent> <leader>q :only<CR>
 nnoremap <silent> <leader>j :jumps<CR>
 nnoremap <silent> <leader>m :messages<CR>
+nnoremap <silent> <leader>t :let $VIM_DIR=expand('%:p:h')<CR>:terminal!<CR>cd $VIM_DIR<CR>
 
 nnoremap <silent> <C-l> <C-w>l
 nnoremap <silent> <C-h> <C-w>h

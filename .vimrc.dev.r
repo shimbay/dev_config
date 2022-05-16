@@ -387,6 +387,8 @@ let g:go_auto_sameids = 0
 let g:go_updatetime = 800
 let g:godef_split = 2
 let g:go_def_mapping_enabled = 0
+
+nnoremap <silent> <leader>tj :GoAddTags json<CR>
 " vim-go end
 
 " vim-python/python-syntax begin
@@ -424,3 +426,5 @@ nmap <F10> :call vimspector#RunToCursor()<CR>
 
 packadd! vimspector
 " puremourning/vimspector end
+"
+" autocmd TermOpen * startinsert

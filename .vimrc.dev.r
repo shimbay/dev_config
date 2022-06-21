@@ -34,7 +34,7 @@
 "   ```
 "   https://www.gomirrors.org/
 "
-"   version=1.18.1
+"   version=1.18.3
 "   rm -rf $WORKSPACE/dev/go && wget -O - https://gomirrors.org/dl/go/go$version.linux-amd64.tar.gz | tar -zxvf - -C $WORKSPACE/dev
 "   ln -s $WORKSPACE/dev/go $WORKSPACE/bin
 "   ```

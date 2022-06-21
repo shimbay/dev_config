@@ -20,3 +20,6 @@
 [core]
 	editor = vim
 	pager = less -
+
+[rebase]
+	instructionFormat = (%an %ah) %s

@@ -156,6 +156,7 @@ alias pull="git pull --rebase"
 alias push="git push"
 alias pushf="git push --force-with-lease"
 alias fetch="git fetch"
+alias ggc="git branch --merged | egrep -v \"(^\*|master|main|dev)\" | xargs git branch -d && git gc --aggressive --prune=now"
 
 alias merge="git mergetool"
 alias diff="git difftool"

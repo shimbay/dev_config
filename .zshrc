@@ -132,7 +132,7 @@ export PYTHONPATH=".:$PYTHONPATH"
 export RUSTUP_UPDATE_ROOT="https://mirrors.ustc.edu.cn/rust-static/rustup"
 export RUSTUP_DIST_SERVER="https://mirrors.ustc.edu.cn/rust-static"
 
-alias ll='ls -alhF'
+alias ll='LC_COLLATE=C ls -alhF --group-directories-first'
 alias la='ls -A'
 alias l='ls -CF'
 

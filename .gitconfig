@@ -23,3 +23,12 @@
 
 [rebase]
 	instructionFormat = (%an %ah) %s
+
+[pager]
+	branch = false
+
+[merge]
+	tool = nvimdiff
+
+[mergetool "vimdiff"]
+	layout = "(LOCAL,REMOTE)/MERGED"

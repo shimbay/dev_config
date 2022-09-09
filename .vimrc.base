@@ -36,7 +36,7 @@ set autoindent
 set cursorline
 set ignorecase
 set nocompatible
-set splitbelow
+" set splitbelow
 set cmdheight=1
 set tabstop=2
 set shiftwidth=2

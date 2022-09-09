@@ -69,6 +69,7 @@
                 "type": "python",
                 "cwd": "${workspaceRoot}",
                 "program": "${workspaceRoot}/main.py",
+                "module": "${workspaceRoot}/main.py",
                 "args": [],
                 "environment": [],
                 "stopOnEntry": true,

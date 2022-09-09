@@ -128,6 +128,7 @@ colorscheme material
 " coc begin
 highlight CursorLine ctermbg=236 guibg=#1a2327
 highlight CocHighlightText ctermbg=52 guibg=#1a2327
+highlight CocFloating ctermbg=233
 
 highlight CocSemProperty ctermfg=Red
 highlight CocSemNamespace ctermfg=208
@@ -148,28 +149,18 @@ map <C-f> :CocList -A -I grep<CR>
 map <C-e> :CocDiagnostics<CR>
 
 inoremap <silent><expr> <TAB>
-  \ pumvisible() ? coc#_select_confirm() :
+  \ coc#pum#visible() ? coc#_select_confirm() :
   \ coc#expandableOrJumpable() ?
   \ "\<C-r>=coc#rpc#request('doKeymap', ['snippets-expand-jump',''])\<CR>" :
-  \ <SID>check_back_space() ? "\<TAB>" :
+  \ CheckBackSpace() ? "\<TAB>" :
   \ coc#refresh()
 
-function! s:show_documentation()
-  if (index(['vim','help'], &filetype) >= 0)
-    execute 'h '.expand('<cword>')
-  elseif (coc#rpc#ready())
-    call CocActionAsync('doHover')
-  else
-    execute '!' . &keywordprg . " " . expand('<cword>')
-  endif
-endfunction
-
-function! s:check_back_space() abort
+function! CheckBackSpace() abort
   let col = col('.') - 1
   return !col || getline('.')[col - 1]  =~# '\s'
 endfunction
 
-let g:coc_snippet_next = '<tab>'
+let g:coc_snippet_next = '<s-tab>'
 
 nmap <silent> <leader>d <Plug>(coc-definition)
 nmap <silent> <leader>y <Plug>(coc-type-definition)
@@ -185,7 +176,7 @@ autocmd User CocStatusChange redraws
 " vim-airline/vim-airline begin
 let g:airline#extensions#default#layout = [
       \ [ 'a', 'c' ],
-      \ [ 'x', 'y', 'z', 'error', 'warning' ]
+      \ [ 'x', 'y', 'z', 'error']
       \ ]
 " vim-airline/vim-airline end
 

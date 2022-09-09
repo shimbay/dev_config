@@ -1,14 +1,23 @@
 {
-  "python.pythonPath": "python3",
   "clangd.enabled": true,
   "clangd.path": "$WORKSPACE/bin/llvm/bin/clangd",
   "clangd.arguments": ["--query-driver=/usr/bin/g++", "--background-index"],
-  "semanticTokens.filetypes": ["*"],
+  "clangd.inlayHints.enable": false,
   "diagnostic.checkCurrentLine": true,
-  "snippets.userSnippetsDirectory": "$HOME/.config/snippet",
+  "list.height": 8,
+  "list.maxPreviewHeight": 20,
+  "list.previewToplineStyle": "middle",
+  "list.previewHighlightGroup": "CursorLine",
+  "list.source.diagnostics.pathFormat": "short",
   "list.source.files.command": "git",
   "list.source.files.args": ["ls-files", "--recurse-submodules"],
   "list.source.grep.command": "rg",
   "list.source.grep.args": ["-i"],
-  "list.source.grep.useLiteral": false
+  "list.source.grep.useLiteral": false,
+  "python.pythonPath": "python3",
+  "pyright.organizeimports.provider": "isort",
+  "semanticTokens.filetypes": ["*"],
+  "snippets.userSnippetsDirectory": "$HOME/.config/snippet",
+  "suggest.maxCompleteItemCount": 15,
+  "suggest.preferCompleteThanJumpPlaceholder": true
 }

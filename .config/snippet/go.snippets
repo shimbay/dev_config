@@ -2,6 +2,12 @@ snippet ; "..." i
 := 
 endsnippet
 
+snippet interface "..."
+type ${1:Name} interface {
+	${0}
+}
+endsnippet
+
 snippet st "..."
 type ${1:Name} struct {
 	${0}
@@ -103,13 +109,27 @@ for item := range ${1:ChanName} {
 endsnippet
 
 snippet its "..."
-for _, item := range ${1:SliceName} {
+for _, v := range ${1:SliceName} {
 	${0}
 }
 endsnippet
 
 snippet itm "..."
-for key, value := range ${1:MapName} {
+for k, v := range ${1:MapName} {
+	${0}
+}
+endsnippet
+
+snippet ins "..."
+for _, k := range ${1:SliceName} {
+	if k == ${2:Target} {
+		${0}
+	}
+}
+endsnippet
+
+snippet inm "..."
+if _, ok := ${1:Map}[${2:Key}]; ok {
 	${0}
 }
 endsnippet

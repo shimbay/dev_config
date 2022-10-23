@@ -79,13 +79,15 @@ nnoremap <silent> 1 :tabp<CR>
 nnoremap <silent> 2 :tabn<CR>
 nnoremap <silent> 3 :tabnew<CR>
 
-map ; :w<CR>
+map ; :wa<CR>
 map <silent> q :close<CR>
 map <silent> Q :qa<CR>
 
 nnoremap u :undo<CR>
 nnoremap U :redo<CR>
 
+nnoremap <silent> C dei
+nnoremap <silent> E dea
 nnoremap <silent> t :vs<CR> \| <C-w>l
 nnoremap <silent> - :sp<CR>
 nnoremap <silent> c :match \| nohl<CR>

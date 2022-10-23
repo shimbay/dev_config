@@ -47,7 +47,7 @@ endsnippet
 snippet gofn "..."
 go func(${1}) ${2} {
 	${0}
-}
+}()
 endsnippet
 
 snippet test "..."
@@ -174,4 +174,12 @@ endsnippet
 
 snippet fatalf "..."
 logrus.Fatalf("${0}")
+endsnippet
+
+snippet jt "..."
+\`json:"${0}"\`
+endsnippet
+
+snippet yt "..."
+\`yaml:"${0}"\`
 endsnippet

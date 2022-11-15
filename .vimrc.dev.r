@@ -128,7 +128,8 @@ colorscheme material
 " coc begin
 highlight CursorLine ctermbg=236 guibg=#1a2327
 highlight CocHighlightText ctermbg=52 guibg=#1a2327
-highlight CocFloating ctermbg=233
+highlight CocFloating ctermbg=236
+highlight CocSearch ctermfg=208
 
 highlight CocSemProperty ctermfg=Red
 highlight CocSemNamespace ctermfg=208
@@ -190,6 +191,15 @@ autocmd FileType python NoAutoFormatBuffer
 
 autocmd FileType sh AutoFormatBuffer shfmt
 autocmd FileType sh NoAutoFormatBuffer
+
+autocmd FileType proto AutoFormatBuffer clang-format
+autocmd FileType proto NoAutoFormatBuffer
+
+autocmd FileType json AutoFormatBuffer js-beautify
+autocmd FileType json NoAutoFormatBuffer
+
+autocmd FileType jsonc AutoFormatBuffer js-beautify
+autocmd FileType jsonc NoAutoFormatBuffer
 
 autocmd FileType go AutoFormatBuffer gofmt
 autocmd FileType rust AutoFormatBuffer rustfmt
@@ -350,7 +360,7 @@ nnoremap <silent> <leader>gs :Git!<CR>
 nnoremap <silent> <leader>gl :Git log<CR>
 nnoremap <silent> <leader>gd :Gvdiffsplit!<CR>
 nnoremap <leader>gD :Gvdiffsplit! 
-nnoremap <silent> <leader>gg :diffget<CR> 
+nnoremap <silent> \\ :diffget<CR> 
 nnoremap <silent> <leader>gb :Git blame<CR>
 " tpope/vim-fugitive end
 
@@ -383,6 +393,7 @@ nnoremap <silent> <leader>tj :GoAddTags json<CR>
 " vim-go end
 
 " vim-python/python-syntax begin
+let g:no_plugin_maps = 1
 let g:python_highlight_all = 1
 let g:python_highlight_builtins = 1
 let g:python_highlight_builtin_objs = 1
@@ -417,5 +428,3 @@ nmap <F10> :call vimspector#RunToCursor()<CR>
 
 packadd! vimspector
 " puremourning/vimspector end
-"
-" autocmd TermOpen * startinsert

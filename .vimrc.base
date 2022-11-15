@@ -27,6 +27,13 @@ syntax on
 " :options
 set nu
 set wrap
+augroup NoWrap
+    autocmd!
+    autocmd FileType proto setlocal nowrap
+    autocmd FileType json setlocal nowrap
+    autocmd FileType jsonc setlocal nowrap
+    autocmd FileType rst setlocal nowrap
+augroup END
 set noro
 set autoread
 set hlsearch
@@ -36,7 +43,7 @@ set autoindent
 set cursorline
 set ignorecase
 set nocompatible
-set updatetime=300
+set updatetime=100
 set cmdheight=1
 set tabstop=2
 set shiftwidth=2
@@ -60,6 +67,8 @@ if has("nvim")
   set jumpoptions+=stack
   au BufEnter * if &buftype == 'terminal' | :startinsert | endif
 endif
+
+autocmd BufRead,BufNewFile *.json set filetype=jsonc
 
 " 光标随插入模式改变
 if has("autocmd")
@@ -87,7 +96,7 @@ nnoremap u :undo<CR>
 nnoremap U :redo<CR>
 
 nnoremap <silent> C dei
-nnoremap <silent> E dea
+nnoremap <silent> E d$a
 nnoremap <silent> t :vs<CR> \| <C-w>l
 nnoremap <silent> - :sp<CR>
 nnoremap <silent> c :match \| nohl<CR>
@@ -98,6 +107,8 @@ nnoremap <silent> <leader>q :only<CR>
 nnoremap <silent> <leader>j :jumps<CR>
 nnoremap <silent> <leader>m :messages<CR>
 nnoremap <silent> <leader>t :let $VIM_DIR=expand('%:p:h')<CR>:terminal!<CR>cd $VIM_DIR<CR>
+nnoremap <silent> ]] ]czz
+nnoremap <silent> [[ [czz
 
 nnoremap <silent> <C-l> <C-w>l
 nnoremap <silent> <C-h> <C-w>h

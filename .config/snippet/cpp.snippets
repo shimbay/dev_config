@@ -11,7 +11,7 @@ typedef enum {
 endsnippet
 
 snippet stt "..."
-typedef struct ${1} {
+typedef struct {
 	${0}
 } ${1};
 endsnippet
@@ -135,6 +135,14 @@ endsnippet
 
 snippet pri "..."
 printf("${0}\n");
+endsnippet
+
+snippet fpri "..."
+fmt::print("${0}\n");
+endsnippet
+
+snippet fmt "..."
+fmt::format("${0}");
 endsnippet
 
 snippet opr "..."

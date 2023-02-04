@@ -34,8 +34,8 @@
 "   ```
 "   https://www.gomirrors.org/
 "
-"   version=1.19.2
-"   rm -rf $WORKSPACE/dev/go && wget -O - https://gomirrors.org/dl/go/go$version.linux-amd64.tar.gz | tar -zxvf - -C $WORKSPACE/dev
+"   version=1.19.4
+"   rm -rf $WORKSPACE/dev/go && wget -O - https://go.dev/dl/go$version.linux-amd64.tar.gz | tar -zxvf - -C $WORKSPACE/dev
 "   ln -s $WORKSPACE/dev/go $WORKSPACE/bin
 "   ```
 "
@@ -134,7 +134,8 @@ highlight CocSearch ctermfg=208
 highlight CocSemProperty ctermfg=Red
 highlight CocSemNamespace ctermfg=208
 
-highlight link CocSemVariable CocSemParameter
+highlight CocSemVariable ctermfg=White
+highlight CocSemParameter ctermfg=14
 highlight link CocSemEnumMember CocSemMacro
 
 imap <C-j> <C-n>
@@ -388,6 +389,7 @@ let g:go_auto_sameids = 0
 let g:go_updatetime = 800
 let g:godef_split = 2
 let g:go_def_mapping_enabled = 0
+let g:go_textobj_enabled = 0
 
 nnoremap <silent> <leader>tj :GoAddTags json<CR>
 " vim-go end

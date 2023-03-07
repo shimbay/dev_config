@@ -84,9 +84,11 @@ plugins=(
 	command-time 			# git clone https://github.com/popstas/zsh-command-time.git ${ZSH_CUSTOM:-~/.oh-my-zsh/custom}/plugins/command-time
 	zsh-autosuggestions		# git clone https://github.com/zsh-users/zsh-autosuggestions.git ${ZSH_CUSTOM:-~/.oh-my-zsh/custom}/plugins/zsh-autosuggestions
 	zsh-syntax-highlighting # git clone https://github.com/zsh-users/zsh-syntax-highlighting.git ${ZSH_CUSTOM:-~/.oh-my-zsh/custom}/plugins/zsh-syntax-highlighting
+	zsh-history-substring-search # git clone https://github.com/zsh-users/zsh-history-substring-search ${ZSH_CUSTOM:-~/.oh-my-zsh/custom}/plugins/zsh-history-substring-search
 )
 
 source $ZSH/oh-my-zsh.sh
+source $ZSH/custom/plugins/zsh-history-substring-search/zsh-history-substring-search.zsh
 
 os=$(uname -s)
 case $os in
@@ -169,5 +171,8 @@ fi
 export PATH=$($HOME/.dedup.sh PATH)
 export PYTHONPATH=$($HOME/.dedup.sh PYTHONPATH)
 export PKG_CONFIG_PATH=$($HOME/.dedup.sh PKG_CONFIG_PATH)
+
+bindkey '^[[A' history-substring-search-up
+bindkey '^[[B' history-substring-search-down
 
 cd $HOME

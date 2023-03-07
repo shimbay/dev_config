@@ -113,6 +113,7 @@ Plugin 'preservim/tagbar'
 Plugin 'puremourning/vimspector'
 Plugin 'scrooloose/nerdtree'
 Plugin 'tpope/vim-fugitive'
+Plugin 'tpope/vim-surround'
 Plugin 'vim-airline/vim-airline'
 Plugin 'vim-airline/vim-airline-themes'
 Plugin 'vim-python/python-syntax'
@@ -137,6 +138,7 @@ highlight CocSemNamespace ctermfg=208
 highlight CocSemVariable ctermfg=White
 highlight CocSemParameter ctermfg=14
 highlight link CocSemEnumMember CocSemMacro
+" highlight LineNr term=bold cterm=NONE ctermfg=DarkGrey ctermbg=grey gui=NONE guifg=DarkGrey guibg=NONE
 
 imap <C-j> <C-n>
 imap <C-k> <C-p>
@@ -204,7 +206,7 @@ autocmd FileType jsonc NoAutoFormatBuffer
 
 autocmd FileType go AutoFormatBuffer gofmt
 autocmd FileType rust AutoFormatBuffer rustfmt
-autocmd FileType cmake AutoFormatBuffer cmake-format
+autocmd FileType CMakeLists.txt AutoFormatBuffer cmake-format
 
 nmap <silent> <leader>f :FormatCode<CR>
 vmap <silent> <leader>f :FormatLines<CR>

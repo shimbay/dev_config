@@ -84,6 +84,18 @@ if has("autocmd")
   au VimLeave * silent execute '!echo -ne "\e[ q"' | redraw!
 endif
 
+let g:win_expand = 0
+
+function! WinZoom() abort
+  if g:win_expand == 0
+    let g:win_expand = 1
+    return "\<C-w>_\|\<C-w>\|"
+  else
+    let g:win_expand = 0
+    return "\<C-w>="
+  endif
+endfunction
+
 nnoremap <silent> 1 :tabp<CR>
 nnoremap <silent> 2 :tabn<CR>
 nnoremap <silent> 3 :tabnew<CR>
@@ -91,8 +103,10 @@ nnoremap <silent> 3 :tabnew<CR>
 map ; :wa<CR>
 noremap m q
 noremap e @a
+xmap r S
 noremap <silent> q :close<CR>
 noremap <silent> Q :qa<CR>
+noremap <expr> <leader>e WinZoom()
 
 nnoremap u :undo<CR>
 nnoremap U :redo<CR>

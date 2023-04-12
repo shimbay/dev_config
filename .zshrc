@@ -84,11 +84,9 @@ plugins=(
 	command-time 			# git clone https://github.com/popstas/zsh-command-time.git ${ZSH_CUSTOM:-~/.oh-my-zsh/custom}/plugins/command-time
 	zsh-autosuggestions		# git clone https://github.com/zsh-users/zsh-autosuggestions.git ${ZSH_CUSTOM:-~/.oh-my-zsh/custom}/plugins/zsh-autosuggestions
 	zsh-syntax-highlighting # git clone https://github.com/zsh-users/zsh-syntax-highlighting.git ${ZSH_CUSTOM:-~/.oh-my-zsh/custom}/plugins/zsh-syntax-highlighting
-	zsh-history-substring-search # git clone https://github.com/zsh-users/zsh-history-substring-search ${ZSH_CUSTOM:-~/.oh-my-zsh/custom}/plugins/zsh-history-substring-search
 )
 
 source $ZSH/oh-my-zsh.sh
-source $ZSH/custom/plugins/zsh-history-substring-search/zsh-history-substring-search.zsh
 
 os=$(uname -s)
 case $os in

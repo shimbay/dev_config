@@ -54,7 +54,7 @@
 "
 " - node.js & npm
 "   ```
-"   wget -O - https://install-node.now.sh/lts | bash /dev/stdin --prefix=$WORKSPACE
+"   curl -fsSL https://deb.nodesource.com/setup_current.x | sudo -E bash - && sudo apt-get install -y nodejs npm
 "   ```
 "
 " - yarn

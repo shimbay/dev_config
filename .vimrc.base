@@ -35,6 +35,7 @@ augroup NoWrap
     autocmd FileType rst setlocal nowrap
 augroup END
 set noro
+set mouse=
 set autoread
 set hlsearch
 set showmatch

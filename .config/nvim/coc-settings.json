@@ -22,5 +22,6 @@
   "snippets.userSnippetsDirectory": "$HOME/.config/snippet",
   "suggest.maxCompleteItemCount": 15,
   "suggest.preferCompleteThanJumpPlaceholder": true,
-  "suggest.enablePreselect": false
+  "suggest.enablePreselect": false,
+  "snippets.ultisnips.pythonPrompt": false
 }

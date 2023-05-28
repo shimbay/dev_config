@@ -25,17 +25,14 @@
 "   ```
 "   https://cmake.org/download/
 "
-"   version=3.23.1
-"   wget -O /tmp/cmake_install.sh https://github.com/Kitware/CMake/releases/download/v$version/cmake-$version-linux-x86_64.sh 
-"   bash /tmp/cmake_install.sh --skip-license --prefix=$WORKSPACE
+"   version=3.26.4 && wget -O /tmp/cmake_install.sh https://github.com/Kitware/CMake/releases/download/v$version/cmake-$version-linux-x86_64.sh && bash /tmp/cmake_install.sh --skip-license --prefix=$WORKSPACE
 "   ```
 "
 " - go
 "   ```
-"   https://www.gomirrors.org/
+"   https://go.dev/dl/
 "
-"   version=1.19.4
-"   rm -rf $WORKSPACE/dev/go && wget -O - https://go.dev/dl/go$version.linux-amd64.tar.gz | tar -zxvf - -C $WORKSPACE/dev
+"   version=1.20.4 && rm -rf $WORKSPACE/dev/go && wget -O - https://go.dev/dl/go$version.linux-amd64.tar.gz | tar -zxvf - -C $WORKSPACE/dev
 "   ln -s $WORKSPACE/dev/go $WORKSPACE/bin
 "   ```
 "

@@ -3,22 +3,13 @@
 "   ```
 "   sudo add-apt-repository ppa:git-core/ppa
 "   sudo apt update
-"   sudo apt install -y libncurses-dev autoconf python3-pip pkg-config software-properties-common libtool libtool-bin mono-complete git
+"   sudo apt install -y libncurses-dev autoconf python3-pip pkg-config software-properties-common libtool libtool-bin mono-complete git universal-ctags
 "   pip3 install --upgrade pynvim yapf toml black cmakelang jsbeautifier --user
 "   ```
 "
 " - ripgrep
 "   ```
 "   https://github.com/BurntSushi/ripgrep/releases
-"   ```
-"
-" - ctags
-"   ```
-"   https://github.com/universal-ctags/ctags#how-to-build-and-install
-"
-"   git clone https://github.com/universal-ctags/ctags.git
-"   cd ctags && ./autogen.sh && ./configure --prefix=$WORKSPACE
-"   make -j 10 && make install
 "   ```
 "
 " - cmake
@@ -30,8 +21,6 @@
 "
 " - go
 "   ```
-"   https://go.dev/dl/
-"
 "   version=1.20.4 && rm -rf $WORKSPACE/dev/go && wget -O - https://go.dev/dl/go$version.linux-amd64.tar.gz | tar -zxvf - -C $WORKSPACE/dev
 "   ln -s $WORKSPACE/dev/go $WORKSPACE/bin
 "   ```

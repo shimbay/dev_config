@@ -32,3 +32,7 @@
 
 [mergetool "vimdiff"]
 	layout = "(LOCAL,REMOTE)/MERGED"
+[push]
+	autoSetupRemote = true
+[safe]
+	directory = /data/xuxinran/dinov2

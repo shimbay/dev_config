@@ -21,7 +21,7 @@
 "
 " - go
 "   ```
-"   version=1.20.4 && rm -rf $WORKSPACE/dev/go && wget -O - https://go.dev/dl/go$version.linux-amd64.tar.gz | tar -zxvf - -C $WORKSPACE/dev
+"   version=1.20.7 && rm -rf $WORKSPACE/dev/go.old && mv $WORKSPACE/dev/go $WORKSPACE/dev/go.old && wget -O - https://go.dev/dl/go$version.linux-amd64.tar.gz | tar -zxvf - -C $WORKSPACE/dev
 "   ln -s $WORKSPACE/dev/go $WORKSPACE/bin
 "   ```
 "
@@ -64,7 +64,7 @@
 "
 " - coc
 "   ```
-"   cd ~/.vim/bundle/coc.nvim && git checkout release && yarn install --frozen-lockfile
+"   cd ~/.vim/bundle/coc.nvim && git checkout release && git pull && yarn install --frozen-lockfile
 "
 "   :CocInstall coc-snippets coc-highlight coc-json coc-lists coc-clangd coc-go coc-pyright coc-rls
 "   ```
@@ -74,11 +74,13 @@
 "   mkdir -p $HOME/.vim/pack/vimspector/opt && ln -s $HOME/.vim/bundle/vimspector $HOME/.vim/pack/vimspector/opt
 "
 "   :VimspectorInstall
+"   :VimspectorUpdate
 "   ```
 "
 " - vim-go
 "   ```
 "   :GoInstallBinaries
+"   :GoUpdateBinaries
 "   ```
 
 set rtp+=~/.vim/bundle/Vundle.vim

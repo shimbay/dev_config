@@ -10,6 +10,10 @@
 "   rm -rf $WORKSPACE/bin/nvim-linux64 && wget -O - https://github.com/neovim/neovim/releases/download/stable/nvim-linux64.tar.gz | tar -zxvf - -C $WORKSPACE/bin
 "   ln -s $WORKSPACE/bin/nvim-linux64/bin/nvim $WORKSPACE/bin/nvim
 "   ln -s $WORKSPACE/bin/nvim $WORKSPACE/bin/vim
+"
+"   # install from source
+"   make CMAKE_BUILD_TYPE=Release -j 10
+"   sudo make install
 "   ```
 "
 " - nvim setup 

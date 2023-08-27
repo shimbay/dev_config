@@ -3,6 +3,9 @@
 # export PATH=$HOME/bin:/usr/local/bin:$PATH
 source /etc/profile
 
+export LC_ALL=C.UTF-8
+export LANG=C.UTF-8
+
 # sudo apt install zsh
 # sh -c "$(curl -fsSL https://raw.github.com/ohmyzsh/ohmyzsh/master/tools/install.sh)"
 # git clone https://github.com/zsh-users/zsh-autosuggestions ${ZSH_CUSTOM:-~/.oh-my-zsh/custom}/plugins/zsh-autosuggestions

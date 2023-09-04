@@ -130,7 +130,7 @@ export PATH="$HOME/.local/bin":$PATH
 export PATH="$HOME/.cargo/bin":$PATH
 export PATH="$HOME/.yarn/bin:$HOME/.config/yarn/global/node_modules/.bin:$PATH"
 
-export PYTHONPATH=".:$PYTHONPATH"
+export PYTHONPATH="$WORKSPACE/script:$PYTHONPATH"
 
 export RUSTUP_UPDATE_ROOT="https://mirrors.ustc.edu.cn/rust-static/rustup"
 export RUSTUP_DIST_SERVER="https://mirrors.ustc.edu.cn/rust-static"

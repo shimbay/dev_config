@@ -21,7 +21,7 @@
 "
 " - go
 "   ```
-"   version=1.20.7 && rm -rf $WORKSPACE/dev/go.old && mv $WORKSPACE/dev/go $WORKSPACE/dev/go.old && wget -O - https://go.dev/dl/go$version.linux-amd64.tar.gz | tar -zxvf - -C $WORKSPACE/dev
+"   version=1.21.5 && rm -rf $WORKSPACE/dev/go.old && mv $WORKSPACE/dev/go $WORKSPACE/dev/go.old && wget -O - https://go.dev/dl/go$version.linux-amd64.tar.gz | tar -zxvf - -C $WORKSPACE/dev
 "   ln -s $WORKSPACE/dev/go $WORKSPACE/bin
 "   ```
 "
@@ -67,6 +67,7 @@
 "   cd ~/.vim/bundle/coc.nvim && git checkout release && git pull && yarn install --frozen-lockfile
 "
 "   :CocInstall coc-snippets coc-highlight coc-json coc-lists coc-clangd coc-go coc-pyright coc-rls
+"   :CocUpdate
 "   ```
 "
 " - vimspector
@@ -410,13 +411,13 @@ nmap <F3> :call vimspector#Launch()<CR>
 nmap <S-F4> :call vimspector#Restart()<CR>
 nmap <F4> :call vimspector#Reset()<CR>
 
-nmap <F5> :call vimspector#ToggleBreakpoint()<CR>
-nmap <F6> :call vimspector#ToggleConditionalBreakpoint()<CR>
+nmap <F5> <Plug>VimspectorToggleBreakpoint
+nmap <F6> <Plug>VimspectorToggleConditionalBreakpoint
 
-nmap <F7> :call vimspector#StepInto()<CR>
-nmap <F8> :call vimspector#StepOver()<CR>
-nmap <F9> :call vimspector#Continue()<CR>
-nmap <F10> :call vimspector#RunToCursor()<CR>
+nmap <F7> <Plug>VimspectorStepInto
+nmap <F8> <Plug>VimspectorStepOver
+nmap <F9> <Plug>VimspectorContinue
+nmap <F10> <Plug>VimspectorRunToCursor
 
 packadd! vimspector
 " puremourning/vimspector end

@@ -29,6 +29,7 @@ filetype plugin indent on
 syntax on
 
 " :options
+set mouse=
 set nu
 set wrap
 augroup NoWrap

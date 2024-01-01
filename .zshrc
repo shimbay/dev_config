@@ -129,8 +129,9 @@ export PATH="$GOPATH/bin":$PATH
 export PATH="$HOME/.local/bin":$PATH
 export PATH="$HOME/.cargo/bin":$PATH
 export PATH="$HOME/.yarn/bin:$HOME/.config/yarn/global/node_modules/.bin:$PATH"
+# export PATH="$HOME/miniconda3/bin:$PATH"  # commented out by conda initialize
 
-export PYTHONPATH="$WORKSPACE/script:$PYTHONPATH"
+export PYTHONPATH="$WORKSPACE/script"
 
 export RUSTUP_UPDATE_ROOT="https://mirrors.ustc.edu.cn/rust-static/rustup"
 export RUSTUP_DIST_SERVER="https://mirrors.ustc.edu.cn/rust-static"
@@ -177,3 +178,18 @@ bindkey '^[[A' history-substring-search-up
 bindkey '^[[B' history-substring-search-down
 
 cd $HOME
+
+# >>> conda initialize >>>
+# !! Contents within this block are managed by 'conda init' !!
+__conda_setup="$('/home/sunyunbo/miniconda3/bin/conda' 'shell.zsh' 'hook' 2> /dev/null)"
+if [ $? -eq 0 ]; then
+    eval "$__conda_setup"
+else
+    if [ -f "/home/sunyunbo/miniconda3/etc/profile.d/conda.sh" ]; then
+        . "/home/sunyunbo/miniconda3/etc/profile.d/conda.sh"
+    else
+        export PATH="/home/sunyunbo/miniconda3/bin:$PATH"
+    fi
+fi
+unset __conda_setup
+# <<< conda initialize <<<

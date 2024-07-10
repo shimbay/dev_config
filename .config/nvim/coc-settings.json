@@ -1,7 +1,13 @@
 {
+  "semanticTokens.enable": true,
+  "semanticTokens.filetypes": ["*"],
   "clangd.enabled": true,
   "clangd.path": "$WORKSPACE/bin/llvm/bin/clangd",
-  "clangd.arguments": ["--query-driver=/usr/bin/g++", "--background-index"],
+  "clangd.arguments": [
+    // "--log=verbose",
+    "--background-index",
+    "-j=8"
+  ],
   "inlayHint.display": false,
   "diagnostic.checkCurrentLine": true,
   "list.height": 15,
@@ -18,7 +24,6 @@
   "pyright.organizeimports.provider": "isort",
   "pyright.inlayHints.functionReturnTypes": false,
   "pyright.inlayHints.variableTypes": false,
-  "semanticTokens.filetypes": ["*"],
   "snippets.userSnippetsDirectory": "$HOME/.config/snippet",
   "suggest.maxCompleteItemCount": 15,
   "suggest.preferCompleteThanJumpPlaceholder": true,

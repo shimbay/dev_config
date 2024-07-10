@@ -42,6 +42,8 @@ augroup END
 set noro
 set autoread
 set hlsearch
+set foldmethod=indent
+set foldlevel=99
 set showmatch
 set expandtab
 set autoindent

@@ -112,21 +112,36 @@ Plugin 'vim-scripts/taglist.vim'
 " All of your Plugins must be added before the following line
 call vundle#end()
 
-" set termguicolors
 colorscheme material
 
 " coc begin
+
+" CocCommand semanticTokens.checkCurrent
+" CocCommand semanticTokens.inspect
+" CocCommand workspace.showOutput clangd
+
+" help coc-config-semanticTokens-enable
+" help CocSem
+ 
+" clangd`s symbol link bug: https://github.com/clangd/clangd/issues/503
+"
+" CocSemTypeMod + type + modifier
+
 highlight CursorLine ctermbg=236 guibg=#1a2327
 highlight CocHighlightText ctermbg=52 guibg=#1a2327
 highlight CocFloating ctermbg=236
 highlight CocSearch ctermfg=208
 
-highlight CocSemProperty ctermfg=Red
+highlight SemColorRed guifg=Red ctermfg=Red
+highlight SemColorPulple guifg=13 ctermfg=13
+
+highlight link CocSemTypeModPropertyClassScope SemColorRed
+highlight link CocSemTypeModPropertyDeclaration SemColorRed
+highlight link CocSemTypeProperty SemColorRed
+highlight link CocSemTypeEnumMember SemColorPulple
+highlight link CocSemTypeModEnumMemberDeclaration SemColorPulple
 highlight CocSemNamespace ctermfg=208
 
-highlight CocSemVariable ctermfg=White
-highlight CocSemParameter ctermfg=14
-highlight link CocSemEnumMember CocSemMacro
 " highlight LineNr term=bold cterm=NONE ctermfg=DarkGrey ctermbg=grey gui=NONE guifg=DarkGrey guibg=NONE
 
 imap <C-j> <C-n>
@@ -140,6 +155,8 @@ map <C-n> :CocList files<CR>
 map <C-g> :CocList changes<CR>
 map <C-f> :CocList -A -I grep<CR>
 map <C-e> :CocDiagnostics<CR>
+
+map <leader>hi :CocCommand semanticTokens.inspect<CR>
 
 inoremap <silent><expr> <TAB>
   \ coc#pum#visible() ? coc#_select_confirm() :

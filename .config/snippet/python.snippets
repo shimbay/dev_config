@@ -1,6 +1,11 @@
 snippet main "..."
+
+def ${0:main}():
+	pass
+
+
 if __name__ == "__main__":
-	${0}
+	${0:main}()
 endsnippet
 
 snippet fn "..."

@@ -65,11 +65,13 @@
         "Python": {
             "adapter": "debugpy",
             "configuration": {
+                // use python3 in current environment
+                "python": "python3",
                 "request": "launch",
                 "type": "python",
                 "cwd": "${workspaceRoot}",
-                "program": "${workspaceRoot}/main.py",
-                "module": "${workspaceRoot}/main.py",
+                // "program": "${workspaceRoot}/main.py",
+                "module": "main",
                 "args": [],
                 "environment": [],
                 "stopOnEntry": true,

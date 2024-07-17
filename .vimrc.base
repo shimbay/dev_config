@@ -72,7 +72,7 @@ if has("nvim")
   set shortmess+=c
   set pumwidth=5
   set jumpoptions+=stack
-  au BufEnter * if &buftype == 'terminal' | :startinsert | endif
+  " au BufEnter * if &buftype == 'terminal' | :startinsert | endif
 endif
 
 autocmd BufRead,BufNewFile *.json set filetype=jsonc
@@ -129,7 +129,7 @@ nnoremap <silent> <leader>V /<C-r><C-w><CR>
 nnoremap <silent> <leader>q :only<CR>
 nnoremap <silent> <leader>j :jumps<CR>
 nnoremap <silent> <leader>m :messages<CR>
-nnoremap <silent> <leader>t :let $VIM_DIR=expand('%:p:h')<CR>:terminal!<CR>cd $VIM_DIR<CR>
+nnoremap <silent> <leader>t :let $VIM_DIR=expand('%:p:h')<CR>:terminal<CR>Acd $VIM_DIR<CR>
 nnoremap <silent> ]] ]czz
 nnoremap <silent> [[ [czz
 

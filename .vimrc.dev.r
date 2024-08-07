@@ -422,7 +422,7 @@ let g:python_highlight_func_calls = 1
 " puremourning/vimspector begin
 let g:vimspector_install_gadgets = [ 'debugpy', 'vscode-cpptools', 'vscode-go' ]
 let g:vimspector_terminal_maxwidth = 50
-let g:vimspector_bottombar_height = 10
+let g:vimspector_bottombar_height = 0
 
 nmap <F3> :call vimspector#Launch()<CR>
 nmap <S-F4> :call vimspector#Restart()<CR>

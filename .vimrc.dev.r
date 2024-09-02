@@ -21,7 +21,7 @@
 "
 " - go
 "   ```
-"   version=1.21.5 && rm -rf $WORKSPACE/dev/go.old && mv $WORKSPACE/dev/go $WORKSPACE/dev/go.old && wget -O - https://go.dev/dl/go$version.linux-amd64.tar.gz | tar -zxvf - -C $WORKSPACE/dev
+"   version=1.23.0 && rm -rf $WORKSPACE/dev/go.old && mv $WORKSPACE/dev/go $WORKSPACE/dev/go.old && wget -O - https://go.dev/dl/go$version.linux-amd64.tar.gz | tar -zxvf - -C $WORKSPACE/dev
 "   ln -s $WORKSPACE/dev/go $WORKSPACE/bin
 "   ```
 "

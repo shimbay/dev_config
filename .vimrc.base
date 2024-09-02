@@ -46,6 +46,7 @@ set foldmethod=indent
 set foldlevel=99
 set showmatch
 set expandtab
+set clipboard=unnamed,unnamedplus
 set autoindent
 set cursorline
 set ignorecase

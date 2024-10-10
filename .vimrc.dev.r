@@ -40,7 +40,8 @@
 "
 " - node.js & npm
 "   ```
-"   curl -fsSL https://deb.nodesource.com/setup_current.x | sudo -E bash - && sudo apt-get install -y nodejs npm
+"   version=v20.18.0 && rm -rf $WORKSPACE/dev/node.old && mv $WORKSPACE/dev/node $WORKSPACE/dev/node.old && wget -O - https://nodejs.org/dist/$version/node-$version-linux-x64.tar.xz | tar -Jxvf - -C $WORKSPACE/dev && mv $WORKSPACE/dev/node-$version-linux-x64 node
+"   ln -s $WORKSPACE/dev/node/bin/node $WORKSPACE/bin && ln -s $WORKSPACE/dev/node/bin/npm $WORKSPACE/bin && ln -s $WORKSPACE/dev/node/bin/npx $WORKSPACE/bin
 "   ```
 "
 " - yarn
@@ -421,8 +422,16 @@ let g:python_highlight_func_calls = 1
 
 " puremourning/vimspector begin
 let g:vimspector_install_gadgets = [ 'debugpy', 'vscode-cpptools', 'vscode-go' ]
+let g:vimspector_console_max_lines = 0
 let g:vimspector_terminal_maxwidth = 50
 let g:vimspector_bottombar_height = 0
+let g:vimspector_settings = {
+    \ 'showInternalConsole': 0,
+    \ 'consoleHeight': 0,
+    \ 'consoleVisible': 0
+    \ }
+
+autocmd User VimspectorUICreated silent! bdelete! Console[0]
 
 nmap <F3> :call vimspector#Launch()<CR>
 nmap <S-F4> :call vimspector#Restart()<CR>

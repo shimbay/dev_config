@@ -32,7 +32,7 @@
                 "program": "${workspaceRoot}/to/binary",
                 "args": [],
                 "environment": [],
-                "stopAtEntry": true,
+                "stopAtEntry": false,
                 "externalConsole": true,
                 "MIMode": "gdb",
                 "breakpointers": {
@@ -56,7 +56,7 @@
                 "request": "launch",
                 "cwd": "${workspaceRoot}",
                 "program": "${workspaceRoot}/to/local/binary",
-                "stopAtEntry": true,
+                "stopAtEntry": false,
                 "externalConsole": true,
                 "MIMode": "gdb",
                 "miDebuggerAddress": "debug:${port}"

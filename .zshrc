@@ -149,6 +149,7 @@ alias icloud="cd $ICLOUD"
 
 alias glog="git log --decorate --graph --pretty='format:%C(bold yellow)%h%C(bold red)%d %C(bold cyan)%an%Creset %C(magenta)(%ad)%n%C(247)Message: %s' --date=human"
 
+alias v="fzf --print0 | xargs -0 -o vim"
 alias st="git status"
 alias co="git checkout"
 alias br="git branch"
@@ -193,3 +194,23 @@ else
 fi
 unset __conda_setup
 # <<< conda initialize <<<
+
+source <(fzf --zsh)
+
+fzf_find_and_vim_open() {
+  local file
+  file=$(find . -type f | fzf --height 50% --reverse --preview 'cat {}' || return)
+  [[ -f $file ]] && vim "$file"
+  zle reset-prompt
+}
+zle     -N   fzf_find_and_vim_open
+bindkey '^n' fzf_find_and_vim_open
+
+fzf_history() {
+  local command
+  command=$(history | fzf --height 50% --query="$BUFFER" +s --reverse --tac || return)
+  LBUFFER=$(echo $command | awk '{print substr($0, index($0, $2))}') # 去掉历史记录中的序号部分
+  zle reset-prompt
+}
+zle     -N   fzf_history
+bindkey '^r' fzf_history

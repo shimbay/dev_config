@@ -199,7 +199,7 @@ source <(fzf --zsh)
 
 fzf_find_and_vim_open() {
   local file
-  file=$(find . -type f | fzf --height 50% --reverse --preview 'cat {}' || return)
+  file=$(find . -type f | fzf --height 50% --reverse --exact --preview 'cat {}' || return)
   [[ -f $file ]] && vim "$file"
   zle reset-prompt
 }
@@ -208,7 +208,7 @@ bindkey '^n' fzf_find_and_vim_open
 
 fzf_history() {
   local command
-  command=$(history | fzf --height 50% --query="$BUFFER" +s --reverse --tac || return)
+  command=$(history | fzf --height 50% --query="$BUFFER" +s --reverse --exact --tac || return)
   LBUFFER=$(echo $command | awk '{print substr($0, index($0, $2))}') # 去掉历史记录中的序号部分
   zle reset-prompt
 }

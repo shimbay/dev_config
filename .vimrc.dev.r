@@ -3,7 +3,7 @@
 "   ```
 "   sudo add-apt-repository ppa:git-core/ppa
 "   sudo apt update
-"   sudo apt install -y libncurses-dev autoconf python3-pip pkg-config software-properties-common libtool libtool-bin mono-complete git universal-ctags gettext libgettextpo-dev zip cmake ninja-build python3.9-dev clangd fzf
+"   sudo apt install -y libncurses-dev autoconf python3-pip pkg-config software-properties-common libtool libtool-bin mono-complete git universal-ctags gettext libgettextpo-dev zip cmake ninja-build python3.9-dev clangd
 "   pip3 install --upgrade pynvim yapf toml black cmakelang jsbeautifier --user
 "   ```
 "
@@ -17,6 +17,11 @@
 "   https://cmake.org/download/
 "
 "   version=3.26.4 && wget -O /tmp/cmake_install.sh https://github.com/Kitware/CMake/releases/download/v$version/cmake-$version-linux-x86_64.sh && bash /tmp/cmake_install.sh --skip-license --prefix=$WORKSPACE
+"   ```
+"
+" - fzf
+"   ```
+"   wget -O - https://github.com/junegunn/fzf/releases/download/v0.56.0/fzf-0.56.0-linux_amd64.tar.gz | tar -zxvf - -C $WORKSPACE/bin
 "   ```
 "
 " - go

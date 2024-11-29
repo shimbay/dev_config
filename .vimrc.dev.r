@@ -16,7 +16,7 @@
 "   ```
 "   https://cmake.org/download/
 "
-"   version=3.26.4 && wget -O /tmp/cmake_install.sh https://github.com/Kitware/CMake/releases/download/v$version/cmake-$version-linux-x86_64.sh && bash /tmp/cmake_install.sh --skip-license --prefix=$WORKSPACE
+"   version=3.26.4; wget -O /tmp/cmake_install.sh https://github.com/Kitware/CMake/releases/download/v$version/cmake-$version-linux-x86_64.sh && bash /tmp/cmake_install.sh --skip-license --prefix=$WORKSPACE
 "   ```
 "
 " - fzf
@@ -26,7 +26,7 @@
 "
 " - go
 "   ```
-"   version=1.23.0 && rm -rf $WORKSPACE/dev/go.old && mv $WORKSPACE/dev/go $WORKSPACE/dev/go.old && wget -O - https://go.dev/dl/go$version.linux-amd64.tar.gz | tar -zxvf - -C $WORKSPACE/dev
+"   version=1.23.3; rm -rf $WORKSPACE/dev/go.old; test -f $WORKSPACE/dev/go && mv $WORKSPACE/dev/go $WORKSPACE/dev/go.old; wget -O - https://go.dev/dl/go$version.linux-amd64.tar.gz | tar -zxvf - -C $WORKSPACE/dev
 "   ln -s $WORKSPACE/dev/go $WORKSPACE/bin
 "   ```
 "
@@ -45,7 +45,7 @@
 "
 " - node.js & npm
 "   ```
-"   version=v20.18.0 && rm -rf $WORKSPACE/dev/node.old && mv $WORKSPACE/dev/node $WORKSPACE/dev/node.old && wget -O - https://nodejs.org/dist/$version/node-$version-linux-x64.tar.xz | tar -Jxvf - -C $WORKSPACE/dev && mv $WORKSPACE/dev/node-$version-linux-x64 node
+"   version=v22.10.0; rm -rf $WORKSPACE/dev/node.old; test -f $WORKSPACE/dev/node && mv $WORKSPACE/dev/node $WORKSPACE/dev/node.old; wget -O - https://nodejs.org/dist/$version/node-$version-linux-x64.tar.xz | tar -Jxvf - -C $WORKSPACE/dev && mv $WORKSPACE/dev/node-$version-linux-x64 $WORKSPACE/dev/node
 "   ln -s $WORKSPACE/dev/node/bin/node $WORKSPACE/bin && ln -s $WORKSPACE/dev/node/bin/npm $WORKSPACE/bin && ln -s $WORKSPACE/dev/node/bin/npx $WORKSPACE/bin
 "   ```
 "

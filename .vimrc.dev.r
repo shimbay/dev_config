@@ -192,8 +192,29 @@ autocmd User CocStatusChange redraws
 " vim-airline/vim-airline begin
 let g:airline#extensions#default#layout = [
       \ [ 'a', 'c' ],
-      \ [ 'x', 'y', 'z', 'error']
+      \ [ 'z']
       \ ]
+let g:airline_mode_map = {
+    \ '__'     : '-',
+    \ 'c'      : 'C',
+    \ 'i'      : 'I',
+    \ 'ic'     : 'I',
+    \ 'ix'     : 'I',
+    \ 'n'      : 'N',
+    \ 'multi'  : 'M',
+    \ 'ni'     : 'N',
+    \ 'no'     : 'N',
+    \ 'R'      : 'R',
+    \ 'Rv'     : 'R',
+    \ 's'      : 'S',
+    \ 'S'      : 'S',
+    \ ''     : 'S',
+    \ 't'      : 'T',
+    \ 'v'      : 'V',
+    \ 'V'      : 'V',
+    \ ''     : 'V',
+    \ }
+let g:airline_section_z = airline#section#create(['linenr', 'maxlinenr', '%4(%c%V%)'])
 " vim-airline/vim-airline end
 
 " google/vim-codefmt begin

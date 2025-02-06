@@ -7,7 +7,7 @@
 "   ```
 "   https://github.com/neovim/neovim/releases/tag/stable
 "
-"   rm -rf $WORKSPACE/bin/nvim-linux64.old && mv $WORKSPACE/bin/nvim-linux64 $WORKSPACE/bin/nvim-linux64.old && wget -O - https://github.com/neovim/neovim/releases/download/stable/nvim-linux64.tar.gz | tar -zxvf - -C $WORKSPACE/bin
+"   rm -rf $WORKSPACE/bin/nvim-linux64.old; test -f $WORKSPACE/bin/nvim-linux64 && mv $WORKSPACE/bin/nvim-linux64 $WORKSPACE/bin/nvim-linux64.old; wget -O - https://github.com/neovim/neovim/releases/download/stable/nvim-linux64.tar.gz | tar -zxvf - -C $WORKSPACE/bin
 "   ln -s $WORKSPACE/bin/nvim-linux64/bin/nvim $WORKSPACE/bin/nvim
 "   ln -s $WORKSPACE/bin/nvim $WORKSPACE/bin/vim
 "

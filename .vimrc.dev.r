@@ -118,6 +118,7 @@ Plugin 'vim-scripts/taglist.vim'
 " All of your Plugins must be added before the following line
 call vundle#end()
 
+let g:material_theme_style = 'darker'
 colorscheme material
 
 " coc begin
@@ -133,8 +134,9 @@ colorscheme material
 "
 " CocSemTypeMod + type + modifier
 
-highlight CursorLine ctermbg=236 guibg=#1a2327
-highlight CocHighlightText ctermbg=52 guibg=#1a2327
+highlight CursorLine guibg=#414141
+highlight LineNr guifg=#856a64
+highlight CocHighlightText guibg=gray
 highlight CocFloating ctermbg=236
 highlight CocSearch ctermfg=208
 
@@ -148,8 +150,6 @@ highlight link CocSemTypeEnumMember SemColorPulple
 highlight link CocSemTypeModEnumMemberDeclaration SemColorPulple
 highlight CocSemNamespace ctermfg=208
 
-" highlight LineNr term=bold cterm=NONE ctermfg=DarkGrey ctermbg=grey gui=NONE guifg=DarkGrey guibg=NONE
-
 imap <C-j> <C-n>
 imap <C-k> <C-p>
 
@@ -160,7 +160,6 @@ map <C-s> :CocList -A -I symbols<CR>
 map <C-n> :CocList files<CR>
 map <C-g> :CocList changes<CR>
 map <C-f> :CocList -A -I grep<CR>
-map <C-e> :CocDiagnostics<CR>
 
 map <leader>hi :CocCommand semanticTokens.inspect<CR>
 

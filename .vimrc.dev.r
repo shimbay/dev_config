@@ -21,12 +21,16 @@
 "
 " - fzf
 "   ```
-"   wget -O - https://github.com/junegunn/fzf/releases/download/v0.56.0/fzf-0.56.0-linux_amd64.tar.gz | tar -zxvf - -C $WORKSPACE/bin
+"   https://github.com/junegunn/fzf/releases
+"
+"   version="0.60.3"; wget -O - https://github.com/junegunn/fzf/releases/download/v$version/fzf-$version-linux_amd64.tar.gz | tar -zxvf - -C $WORKSPACE/bin
 "   ```
 "
 " - go
 "   ```
-"   version=1.23.3; rm -rf $WORKSPACE/dev/go.old; test -f $WORKSPACE/dev/go && mv $WORKSPACE/dev/go $WORKSPACE/dev/go.old; wget -O - https://go.dev/dl/go$version.linux-amd64.tar.gz | tar -zxvf - -C $WORKSPACE/dev
+"   https://go.dev/dl/
+"
+"   version=1.23.7; rm -rf $WORKSPACE/dev/go.old; test -d $WORKSPACE/dev/go && mv $WORKSPACE/dev/go $WORKSPACE/dev/go.old; wget -O - https://go.dev/dl/go$version.linux-amd64.tar.gz | tar -zxvf - -C $WORKSPACE/dev
 "   ln -s $WORKSPACE/dev/go $WORKSPACE/bin
 "   ```
 "
@@ -45,7 +49,9 @@
 "
 " - node.js & npm
 "   ```
-"   version=v22.10.0; rm -rf $WORKSPACE/dev/node.old; test -f $WORKSPACE/dev/node && mv $WORKSPACE/dev/node $WORKSPACE/dev/node.old; wget -O - https://nodejs.org/dist/$version/node-$version-linux-x64.tar.xz | tar -Jxvf - -C $WORKSPACE/dev && mv $WORKSPACE/dev/node-$version-linux-x64 $WORKSPACE/dev/node
+"   https://nodejs.org/en/download
+"
+"   version=v22.14.0; rm -rf $WORKSPACE/dev/node.old; test -d $WORKSPACE/dev/node && mv $WORKSPACE/dev/node $WORKSPACE/dev/node.old; wget -O - https://nodejs.org/dist/$version/node-$version-linux-x64.tar.xz | tar -Jxvf - -C $WORKSPACE/dev && rm -rf node && mv $WORKSPACE/dev/node-$version-linux-x64 $WORKSPACE/dev/node
 "   ln -s $WORKSPACE/dev/node/bin/node $WORKSPACE/bin && ln -s $WORKSPACE/dev/node/bin/npm $WORKSPACE/bin && ln -s $WORKSPACE/dev/node/bin/npx $WORKSPACE/bin
 "   ```
 "
@@ -56,6 +62,7 @@
 "
 " - clangd
 "   ```
+"   https://discourse.llvm.org/c/announce/46
 "   Linux: https://releases.llvm.org/download.html
 "   MacOS: brew install llvm
 "
@@ -72,7 +79,7 @@
 "   ```
 "   cd ~/.vim/bundle/coc.nvim && git checkout release && git pull && yarn install --frozen-lockfile
 "
-"   :CocInstall coc-snippets coc-highlight coc-json coc-lists coc-clangd coc-go coc-pyright coc-rls
+"   :CocInstall coc-snippets coc-highlight coc-json coc-lists coc-clangd coc-go coc-pyright coc-rls coc-cmake
 "   :CocUpdate
 "   ```
 "
@@ -109,9 +116,9 @@ Plugin 'puremourning/vimspector'
 Plugin 'scrooloose/nerdtree'
 Plugin 'tpope/vim-fugitive'
 Plugin 'tpope/vim-surround'
+Plugin 'tveskag/nvim-blame-line'
 Plugin 'vim-airline/vim-airline'
 Plugin 'vim-airline/vim-airline-themes'
-Plugin 'vim-python/python-syntax'
 Plugin 'vim-scripts/DoxygenToolkit.vim'
 Plugin 'vim-scripts/taglist.vim'
 
@@ -120,6 +127,7 @@ call vundle#end()
 
 let g:material_theme_style = 'darker'
 colorscheme material
+highlight Normal guibg=#151515
 
 " coc begin
 
@@ -134,21 +142,27 @@ colorscheme material
 "
 " CocSemTypeMod + type + modifier
 
-highlight CursorLine guibg=#414141
-highlight LineNr guifg=#856a64
-highlight CocHighlightText guibg=gray
+" https://htmlcolorcodes.com/
+highlight CursorLine guibg=#353535
+highlight Comment guifg=#727272
+highlight LineNr guifg=#727272
+highlight CursorLineNr guifg=#00A42B gui=bold
+highlight Visual guibg=#414141
+
+highlight CocHighlightText guibg=#005057
 highlight CocFloating ctermbg=236
 highlight CocSearch ctermfg=208
 
-highlight SemColorRed guifg=Red ctermfg=Red
-highlight SemColorPulple guifg=13 ctermfg=13
+highlight SemColorRed guifg=#E46B37
+highlight SemColorPulple guifg=#AE5AE8 gui=bold
 
+highlight link CocSemTypeTypeParameter CocSemTypeClass
 highlight link CocSemTypeModPropertyClassScope SemColorRed
 highlight link CocSemTypeModPropertyDeclaration SemColorRed
 highlight link CocSemTypeProperty SemColorRed
 highlight link CocSemTypeEnumMember SemColorPulple
 highlight link CocSemTypeModEnumMemberDeclaration SemColorPulple
-highlight CocSemNamespace ctermfg=208
+highlight link CocSemTypeNamespace CocSemTypeOperator
 
 imap <C-j> <C-n>
 imap <C-k> <C-p>
@@ -217,6 +231,8 @@ let g:airline_section_z = airline#section#create(['linenr', 'maxlinenr', '%4(%c%
 " vim-airline/vim-airline end
 
 " google/vim-codefmt begin
+let g:codefmt#js_beautify_executable = "js-beautify -s 2"
+
 autocmd FileType c,cpp,proto let b:codefmt_formatter = "clang-format"
 let g:clang_format#command = "clang-format"
 let g:clang_format#detect_style_file = 1
@@ -232,9 +248,6 @@ autocmd FileType proto NoAutoFormatBuffer
 
 autocmd FileType json AutoFormatBuffer js-beautify
 autocmd FileType json NoAutoFormatBuffer
-
-autocmd FileType jsonc AutoFormatBuffer js-beautify
-autocmd FileType jsonc NoAutoFormatBuffer
 
 autocmd FileType go AutoFormatBuffer gofmt
 autocmd FileType rust AutoFormatBuffer rustfmt
@@ -446,6 +459,7 @@ let g:python_highlight_func_calls = 1
 " vim-python/python-syntax end
 
 " puremourning/vimspector begin
+let g:vimspector_base_dir='$HOME/.vim/pack/vimspector/opt/vimspector'
 let g:vimspector_install_gadgets = [ 'debugpy', 'vscode-cpptools', 'vscode-go' ]
 let g:vimspector_console_max_lines = 0
 let g:vimspector_terminal_maxwidth = 50
@@ -472,3 +486,11 @@ nmap <F10> <Plug>VimspectorRunToCursor
 
 packadd! vimspector
 " puremourning/vimspector end
+
+" tveskag/nvim-blame-line begin
+nmap <leader>m :ToggleBlameLine<CR>
+let g:blameLineVirtualTextFormat = '    %s'
+let g:blameLineGitFormat = '%an | %ai | %s | %h'
+" tveskag/nvim-blame-line end
+
+let g:context_max_height = 9

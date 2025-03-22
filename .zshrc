@@ -124,6 +124,7 @@ export PATH="$WORKSPACE/bin":$PATH
 export PATH="$WORKSPACE/bin/go/bin":$PATH
 export PATH="$WORKSPACE/bin/llvm/bin":$PATH
 export PATH="$WORKSPACE/script":$PATH
+export PATH="$WORKSPACE/dev/node/bin:$PATH"
 export PATH="$ICLOUD/sync/script":$PATH
 export PATH="$GOPATH/bin":$PATH
 export PATH="$HOME/.local/bin":$PATH
@@ -180,21 +181,6 @@ bindkey '^[[B' history-substring-search-down
 
 cd $HOME
 
-# >>> conda initialize >>>
-# !! Contents within this block are managed by 'conda init' !!
-__conda_setup="$('/home/sunyunbo/miniconda3/bin/conda' 'shell.zsh' 'hook' 2> /dev/null)"
-if [ $? -eq 0 ]; then
-    eval "$__conda_setup"
-else
-    if [ -f "/home/sunyunbo/miniconda3/etc/profile.d/conda.sh" ]; then
-        . "/home/sunyunbo/miniconda3/etc/profile.d/conda.sh"
-    else
-        export PATH="/home/sunyunbo/miniconda3/bin:$PATH"
-    fi
-fi
-unset __conda_setup
-# <<< conda initialize <<<
-
 source <(fzf --zsh)
 
 fzf_find_and_vim_open() {
@@ -214,3 +200,18 @@ fzf_history() {
 }
 zle     -N   fzf_history
 bindkey '^r' fzf_history
+
+# >>> conda initialize >>>
+# !! Contents within this block are managed by 'conda init' !!
+__conda_setup="$('/home/sunyunbo/miniconda3/bin/conda' 'shell.zsh' 'hook' 2> /dev/null)"
+if [ $? -eq 0 ]; then
+    eval "$__conda_setup"
+else
+    if [ -f "/home/sunyunbo/miniconda3/etc/profile.d/conda.sh" ]; then
+        . "/home/sunyunbo/miniconda3/etc/profile.d/conda.sh"
+    else
+        export PATH="/home/sunyunbo/miniconda3/bin:$PATH"
+    fi
+fi
+unset __conda_setup
+# <<< conda initialize <<<

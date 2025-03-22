@@ -7,8 +7,8 @@
 "   ```
 "   https://github.com/neovim/neovim/releases/tag/stable
 "
-"   rm -rf $WORKSPACE/bin/nvim-linux64.old; test -f $WORKSPACE/bin/nvim-linux64 && mv $WORKSPACE/bin/nvim-linux64 $WORKSPACE/bin/nvim-linux64.old; wget -O - https://github.com/neovim/neovim/releases/download/stable/nvim-linux64.tar.gz | tar -zxvf - -C $WORKSPACE/bin
-"   ln -s $WORKSPACE/bin/nvim-linux64/bin/nvim $WORKSPACE/bin/nvim
+"   rm -rf $WORKSPACE/bin/nvim-linux-x86_64.old; test -d $WORKSPACE/bin/nvim-linux-x86_64 && mv $WORKSPACE/bin/nvim-linux-x86_64 $WORKSPACE/bin/nvim-linux-x86_64.old; wget -O - https://github.com/neovim/neovim/releases/download/stable/nvim-linux-x86_64.tar.gz | tar -zxvf - -C $WORKSPACE/bin
+"   ln -s $WORKSPACE/bin/nvim-linux-x86_64/bin/nvim $WORKSPACE/bin/nvim
 "   ln -s $WORKSPACE/bin/nvim $WORKSPACE/bin/vim
 "
 "   # install from source
@@ -39,6 +39,7 @@ augroup NoWrap
     autocmd FileType jsonc setlocal nowrap
     autocmd FileType rst setlocal nowrap
 augroup END
+set termguicolors
 set noro
 set autoread
 set hlsearch
@@ -76,7 +77,7 @@ if has("nvim")
   " au BufEnter * if &buftype == 'terminal' | :startinsert | endif
 endif
 
-autocmd BufRead,BufNewFile *.json set filetype=jsonc
+" autocmd BufRead,BufNewFile *.json set filetype=jsonc
 
 " 光标随插入模式改变
 if has("autocmd")

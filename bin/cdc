@@ -1,0 +1,19 @@
+#! /bin/bash
+
+name=""
+while getopts "n:" option; do
+  case $option in
+    n) name=$OPTARG ;;
+  esac
+done
+
+if test -z "${name}"; then
+  echo "name should be set by -n"
+  exit 1
+fi
+
+conda config --set auto_activate_base false
+conda create --name ${name}
+conda activate ${name}
+mkdir -p ${CONDA_PREFIX}/etc/conda/activate.d
+cp ${HOME}/dev-config/miniconda/activate-env.sh ${CONDA_PREFIX}/etc/conda/activate.d

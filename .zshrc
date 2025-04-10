@@ -130,6 +130,7 @@ export PATH="$GOPATH/bin":$PATH
 export PATH="$HOME/.local/bin":$PATH
 export PATH="$HOME/.cargo/bin":$PATH
 export PATH="$HOME/.yarn/bin:$HOME/.config/yarn/global/node_modules/.bin:$PATH"
+export PATH="$HOME/dev_config/bin":$PATH
 # export PATH="$HOME/miniconda3/bin:$PATH"  # commented out by conda initialize
 
 export PYTHONPATH="$WORKSPACE/script"
@@ -165,7 +166,6 @@ alias fetch="git fetch"
 alias ggc="git branch --merged | egrep -v \"(^\*|master|main|dev)\" | xargs git branch -d && git gc --aggressive --prune=now"
 
 alias cda="conda activate"
-alias cdc="name="npu" && conda create --name ${name} && conda activate ${name} && mkdir -p ${CONDA_PREFIX}/etc/conda/activate.d && cp ~/dev-config/miniconda/activate-env.sh ${CONDA_PREFIX}/etc/conda/activate.d"
 
 alias merge="git mergetool"
 alias diff="git difftool"

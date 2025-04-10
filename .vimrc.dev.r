@@ -34,11 +34,6 @@
 "   ln -s $WORKSPACE/dev/go $WORKSPACE/bin
 "   ```
 "
-" - conda
-"
-"   conda config --set auto_activate_base false
-"   export name="npu" && conda create --name ${name} && conda activate ${name} && mkdir -p ${CONDA_PREFIX}/etc/conda/activate.d && cp ~/dev-config/miniconda/activate-env.sh ${CONDA_PREFIX}/etc/conda/activate.d
-"
 " - rust
 "   ```
 "   Linux: curl https://sh.rustup.rs -sSf | sh

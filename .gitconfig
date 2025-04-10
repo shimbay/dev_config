@@ -27,5 +27,6 @@
 	autoSetupRemote = true
 [safe]
 	directory = /data/xuxinran/dinov2
+
 [tig "bind"]
   generic = D !git difftool --tool=vimdiff --no-prompt --trust-exit-code %(commit)^!

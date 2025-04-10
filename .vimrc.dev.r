@@ -34,6 +34,11 @@
 "   ln -s $WORKSPACE/dev/go $WORKSPACE/bin
 "   ```
 "
+" - conda
+"
+"   conda config --set auto_activate_base false
+"   export name="npu" && conda create --name ${name} && conda activate ${name} && mkdir -p ${CONDA_PREFIX}/etc/conda/activate.d && cp ~/dev-config/miniconda/activate-env.sh ${CONDA_PREFIX}/etc/conda/activate.d
+"
 " - rust
 "   ```
 "   Linux: curl https://sh.rustup.rs -sSf | sh
@@ -459,7 +464,6 @@ let g:python_highlight_func_calls = 1
 " vim-python/python-syntax end
 
 " puremourning/vimspector begin
-let g:vimspector_base_dir='$HOME/.vim/pack/vimspector/opt/vimspector'
 let g:vimspector_install_gadgets = [ 'debugpy', 'vscode-cpptools', 'vscode-go' ]
 let g:vimspector_console_max_lines = 0
 let g:vimspector_terminal_maxwidth = 50
@@ -479,7 +483,8 @@ nmap <F4> :call vimspector#Reset()<CR>
 nmap <F5> <Plug>VimspectorToggleBreakpoint
 nmap <F6> <Plug>VimspectorToggleConditionalBreakpoint
 
-nmap <F7> <Plug>VimspectorStepInto
+nmap <S-F7> <Plug>VimspectorStepInto
+nmap <F7> <Plug>VimspectorStepOver
 nmap <F8> <Plug>VimspectorStepOver
 nmap <F9> <Plug>VimspectorContinue
 nmap <F10> <Plug>VimspectorRunToCursor

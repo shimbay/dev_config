@@ -164,6 +164,9 @@ alias pushf="git push --force-with-lease"
 alias fetch="git fetch"
 alias ggc="git branch --merged | egrep -v \"(^\*|master|main|dev)\" | xargs git branch -d && git gc --aggressive --prune=now"
 
+alias cda="conda activate"
+alias cdc="name="npu" && conda create --name ${name} && conda activate ${name} && mkdir -p ${CONDA_PREFIX}/etc/conda/activate.d && cp ~/dev-config/miniconda/activate-env.sh ${CONDA_PREFIX}/etc/conda/activate.d"
+
 alias merge="git mergetool"
 alias diff="git difftool"
 

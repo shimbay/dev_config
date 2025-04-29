@@ -12,3 +12,8 @@ snippet fn "..."
 def ${1:Name}(${2:Parameter}):
 	${0}
 endsnippet
+
+
+snippet ipy "..."
+from IPython import embed; from inspect import currentframe, getframeinfo; frameinfo = getframeinfo(currentframe()); print(f"==> debug: {frameinfo.filename}@{frameinfo.lineno}"); embed()
+endsnippet

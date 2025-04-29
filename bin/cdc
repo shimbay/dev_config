@@ -1,4 +1,6 @@
-#! /bin/bash
+#! /usr/bin/zsh
+
+set -e
 
 name=""
 while getopts "n:" option; do
@@ -12,8 +14,10 @@ if test -z "${name}"; then
   exit 1
 fi
 
-conda config --set auto_activate_base false
+WS=$(realpath ${0:a:h}/..)
+
 conda create --name ${name}
+
 conda activate ${name}
 mkdir -p ${CONDA_PREFIX}/etc/conda/activate.d
-cp ${HOME}/dev-config/miniconda/activate-env.sh ${CONDA_PREFIX}/etc/conda/activate.d
+cp ${WS}/miniconda/activate-env.sh ${CONDA_PREFIX}/etc/conda/activate.d

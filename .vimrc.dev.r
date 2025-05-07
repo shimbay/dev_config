@@ -79,7 +79,7 @@
 "   ```
 "   cd ~/.vim/bundle/coc.nvim && git checkout release && git pull && yarn install --frozen-lockfile
 "
-"   :CocInstall coc-snippets coc-highlight coc-json coc-lists coc-clangd coc-go coc-pyright coc-rls coc-cmake
+"   :CocInstall coc-snippets coc-highlight coc-json coc-lists coc-clangd coc-go coc-pyright coc-rls coc-cmake coc-mlir
 "   :CocUpdate
 "   ```
 "
@@ -121,6 +121,9 @@ Plugin 'vim-airline/vim-airline'
 Plugin 'vim-airline/vim-airline-themes'
 Plugin 'vim-scripts/DoxygenToolkit.vim'
 Plugin 'vim-scripts/taglist.vim'
+
+Plugin 'antiagainst/vim-tablegen'
+Plugin 'hunterzju/mlir-vim'
 
 " All of your Plugins must be added before the following line
 call vundle#end()
@@ -233,6 +236,7 @@ let g:airline_section_z = airline#section#create(['linenr', 'maxlinenr', '%4(%c%
 " google/vim-codefmt begin
 let g:codefmt#js_beautify_executable = "js-beautify -s 2"
 
+au BufRead,BufNewFile *.mlir set filetype=mlir
 autocmd FileType c,cpp,proto let b:codefmt_formatter = "clang-format"
 let g:clang_format#command = "clang-format"
 let g:clang_format#detect_style_file = 1

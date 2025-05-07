@@ -156,7 +156,6 @@ alias st="git status"
 alias co="git checkout"
 alias br="git branch"
 alias stash="git stash"
-alias rbs="git merge-base HEAD master | xargs -I {} git rebase -i {} --reset-author-date"
 alias cnt="git rebase --continue"
 alias abr="git rebase --abort"
 alias pull="git pull --rebase"
@@ -168,7 +167,6 @@ alias ggc="git branch --merged | egrep -v \"(^\*|master|main|dev)\" | xargs git 
 alias cda="conda activate"
 
 alias merge="git mergetool"
-alias diff="git difftool"
 
 customrc=$HOME/.customrc
 if test -f "$customrc"; then

@@ -7,3 +7,5 @@ export CUDNN_LIB_DIR=${HOME}/workspace/dev/cudnn/lib
 export CUDNN_INCLUDE_DIR=${HOME}/workspace/dev/cudnn/include
 export CC=${CONDA_PREFIX}/bin/gcc
 export CXX=${CONDA_PREFIX}/bin/g++
+export CFLAGS="-I${CONDA_PREFIX}/include"
+export LDFLAGS="-L${CONDA_PREFIX}/lib"

@@ -1,0 +1,20 @@
+#! /bin/bash
+
+t=0
+while getopts "mr" option; do
+  case ${option} in
+    m) t=1 ;;
+    r) t=2 ;;
+  esac
+done
+
+if test $t -eq 1; then
+  base=$(git merge-base HEAD master)
+  git rebase -i $base --reset-author-date
+elif test $t -eq 2; then
+  base=$(git for-each-ref --format='%(upstream:short)' $(git symbolic-ref -q HEAD))
+  git rebase -i $base --reset-author-date
+else
+  echo "unknown diff type"
+  exit 1
+fi

@@ -20,4 +20,4 @@ conda create --name ${name}
 
 conda activate ${name}
 mkdir -p ${CONDA_PREFIX}/etc/conda/activate.d
-cp ${WS}/miniconda/activate-env.sh ${CONDA_PREFIX}/etc/conda/activate.d
+ln -s ${WS}/miniconda/activate-env.sh ${CONDA_PREFIX}/etc/conda/activate.d

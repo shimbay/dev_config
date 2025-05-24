@@ -1,10 +1,12 @@
 #! /bin/bash
 
 t=0
-while getopts "mr" option; do
+commit=""
+while getopts "mrc:" option; do
   case ${option} in
     m) t=1 ;;
     r) t=2 ;;
+    c) t=3; commit=$OPTARG ;;
   esac
 done
 
@@ -16,6 +18,8 @@ elif test $t -eq 1; then
 elif test $t -eq 2; then
   base=$(git for-each-ref --format='%(upstream:short)' $(git symbolic-ref -q HEAD))
   git difftool $base
+elif test $t -eq 3; then
+  git difftool $commit
 else
   echo "unknown diff type"
   exit 1

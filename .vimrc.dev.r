@@ -476,16 +476,22 @@ let g:vimspector_settings = {
 autocmd User VimspectorUICreated silent! bdelete! Console[0]
 
 nmap <F3> :call vimspector#Launch()<CR>
+nmap , :call vimspector#Launch()<CR>
 nmap <S-F4> :call vimspector#Restart()<CR>
 nmap <F4> :call vimspector#Reset()<CR>
+nmap 4 :call vimspector#Reset()<CR>
 
 nmap <F5> <Plug>VimspectorToggleBreakpoint
+nmap 5 <Plug>VimspectorToggleBreakpoint
 nmap <F6> <Plug>VimspectorToggleConditionalBreakpoint
+nmap 6 <Plug>VimspectorToggleConditionalBreakpoint
 
-nmap <S-F7> <Plug>VimspectorStepInto
-nmap <F7> <Plug>VimspectorStepOver
+nmap <F7> <Plug>VimspectorStepInto
+nmap 7 <Plug>VimspectorStepInto
 nmap <F8> <Plug>VimspectorStepOver
+nmap 8 <Plug>VimspectorStepOver
 nmap <F9> <Plug>VimspectorContinue
+nmap 9 <Plug>VimspectorContinue
 nmap <F10> <Plug>VimspectorRunToCursor
 
 packadd! vimspector

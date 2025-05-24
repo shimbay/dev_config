@@ -67,6 +67,9 @@ set backupdir=~/.vim/backup//
 set directory=~/.vim/swap//
 set undodir=~/.vim/undo//
 
+nnoremap x "_x
+nnoremap d "_d
+
 if has("nvim")
   set completeopt=menuone
   set updatetime=300

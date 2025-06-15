@@ -3,7 +3,7 @@
 "   ```
 "   sudo add-apt-repository ppa:git-core/ppa
 "   sudo apt update
-"   sudo apt install -y libncurses-dev autoconf python3-pip pkg-config software-properties-common libtool libtool-bin mono-complete git universal-ctags gettext libgettextpo-dev zip cmake ninja-build python3.9-dev clangd
+"   sudo apt install -y libncurses-dev autoconf python3-pip pkg-config software-properties-common libtool libtool-bin mono-complete git universal-ctags gettext libgettextpo-dev zip cmake ninja-build python3.9-dev clangd luarocks
 "   pip3 install --upgrade pynvim yapf toml black cmakelang jsbeautifier --user
 "   ```
 "
@@ -23,14 +23,14 @@
 "   ```
 "   https://github.com/junegunn/fzf/releases
 "
-"   version="0.60.3"; wget -O - https://github.com/junegunn/fzf/releases/download/v$version/fzf-$version-linux_amd64.tar.gz | tar -zxvf - -C $WORKSPACE/bin
+"   version="0.62.0"; wget -O - https://github.com/junegunn/fzf/releases/download/v$version/fzf-$version-linux_amd64.tar.gz | tar -zxvf - -C $WORKSPACE/bin
 "   ```
 "
 " - go
 "   ```
 "   https://go.dev/dl/
 "
-"   version=1.23.7; rm -rf $WORKSPACE/dev/go.old; test -d $WORKSPACE/dev/go && mv $WORKSPACE/dev/go $WORKSPACE/dev/go.old; wget -O - https://go.dev/dl/go$version.linux-amd64.tar.gz | tar -zxvf - -C $WORKSPACE/dev
+"   version=1.24.4; rm -rf $WORKSPACE/dev/go.old; test -d $WORKSPACE/dev/go && mv $WORKSPACE/dev/go $WORKSPACE/dev/go.old; wget -O - https://go.dev/dl/go$version.linux-amd64.tar.gz | tar -zxvf - -C $WORKSPACE/dev
 "   ln -s $WORKSPACE/dev/go $WORKSPACE/bin
 "   ```
 "
@@ -51,7 +51,7 @@
 "   ```
 "   https://nodejs.org/en/download
 "
-"   version=v22.14.0; rm -rf $WORKSPACE/dev/node.old; test -d $WORKSPACE/dev/node && mv $WORKSPACE/dev/node $WORKSPACE/dev/node.old; wget -O - https://nodejs.org/dist/$version/node-$version-linux-x64.tar.xz | tar -Jxvf - -C $WORKSPACE/dev && rm -rf node && mv $WORKSPACE/dev/node-$version-linux-x64 $WORKSPACE/dev/node
+"   version=v22.16.0; rm -rf $WORKSPACE/dev/node.old; test -d $WORKSPACE/dev/node && mv $WORKSPACE/dev/node $WORKSPACE/dev/node.old; wget -O - https://nodejs.org/dist/$version/node-$version-linux-x64.tar.xz | tar -Jxvf - -C $WORKSPACE/dev && rm -rf node && mv $WORKSPACE/dev/node-$version-linux-x64 $WORKSPACE/dev/node
 "   ln -s $WORKSPACE/dev/node/bin/node $WORKSPACE/bin && ln -s $WORKSPACE/dev/node/bin/npm $WORKSPACE/bin && ln -s $WORKSPACE/dev/node/bin/npx $WORKSPACE/bin
 "   ```
 "
@@ -77,9 +77,9 @@
 "
 " - coc
 "   ```
-"   cd ~/.vim/bundle/coc.nvim && git checkout release && git pull && yarn install --frozen-lockfile
+"   cd ~/.vim/bundle/coc.nvim && git checkout master && git pull && yarn install --frozen-lockfile
 "
-"   :CocInstall coc-snippets coc-highlight coc-json coc-lists coc-clangd coc-go coc-pyright coc-rls coc-cmake coc-mlir
+"   :CocInstall coc-snippets coc-highlight coc-json coc-lists coc-clangd coc-go coc-pyright coc-rls coc-cmake coc-mlir coc-lua
 "   :CocUpdate
 "   ```
 "
@@ -256,9 +256,11 @@ autocmd FileType json NoAutoFormatBuffer
 autocmd FileType go AutoFormatBuffer gofmt
 autocmd FileType rust AutoFormatBuffer rustfmt
 autocmd FileType CMakeLists.txt AutoFormatBuffer cmake-format
+autocmd FileType lua AutoFormatBuffer luaformatterfiveone
 
 nmap <silent> <leader>f :FormatCode<CR>
 vmap <silent> <leader>f :FormatLines<CR>
+vmap <silent> <leader>c "+y
 " google/vim-codefmt end
 
 " nerdtree begin
@@ -502,5 +504,3 @@ nmap <leader>m :ToggleBlameLine<CR>
 let g:blameLineVirtualTextFormat = '    %s'
 let g:blameLineGitFormat = '%an | %ai | %s | %h'
 " tveskag/nvim-blame-line end
-
-let g:context_max_height = 9

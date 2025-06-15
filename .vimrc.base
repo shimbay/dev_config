@@ -47,7 +47,6 @@ set foldmethod=indent
 set foldlevel=99
 set showmatch
 set expandtab
-set clipboard=unnamed,unnamedplus
 set autoindent
 set cursorline
 set ignorecase
@@ -57,7 +56,6 @@ set cmdheight=1
 set tabstop=2
 set shiftwidth=2
 set encoding=utf-8
-set pastetoggle=<leader>p
 set backspace=indent,eol,start
 set ttimeoutlen=5
 set timeoutlen=500
@@ -66,9 +64,6 @@ set signcolumn=number
 set backupdir=~/.vim/backup//
 set directory=~/.vim/swap//
 set undodir=~/.vim/undo//
-
-nnoremap x "_x
-nnoremap d "_d
 
 if has("nvim")
   set completeopt=menuone

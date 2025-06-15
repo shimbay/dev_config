@@ -164,8 +164,6 @@ alias pushf="git push --force-with-lease"
 alias fetch="git fetch"
 alias ggc="git branch --merged | egrep -v \"(^\*|master|main|dev)\" | xargs git branch -d && git gc --aggressive --prune=now"
 
-alias cda="conda activate"
-
 alias merge="git mergetool"
 
 customrc=$HOME/.customrc

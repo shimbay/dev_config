@@ -1,0 +1,3 @@
+#! /bin/bash
+
+js-beautify -s 2 -k

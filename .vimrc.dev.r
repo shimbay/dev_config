@@ -23,7 +23,7 @@
 "   ```
 "   https://github.com/junegunn/fzf/releases
 "
-"   version="0.62.0"; wget -O - https://github.com/junegunn/fzf/releases/download/v$version/fzf-$version-linux_amd64.tar.gz | tar -zxvf - -C $WORKSPACE/bin
+"   version="0.65.1"; wget -O - https://github.com/junegunn/fzf/releases/download/v$version/fzf-$version-linux_amd64.tar.gz | tar -zxvf - -C $WORKSPACE/bin
 "   ```
 "
 " - go
@@ -51,7 +51,7 @@
 "   ```
 "   https://nodejs.org/en/download
 "
-"   version=v22.16.0; rm -rf $WORKSPACE/dev/node.old; test -d $WORKSPACE/dev/node && mv $WORKSPACE/dev/node $WORKSPACE/dev/node.old; wget -O - https://nodejs.org/dist/$version/node-$version-linux-x64.tar.xz | tar -Jxvf - -C $WORKSPACE/dev && rm -rf node && mv $WORKSPACE/dev/node-$version-linux-x64 $WORKSPACE/dev/node
+"   version=v22.18.0; rm -rf $WORKSPACE/dev/node.old; test -d $WORKSPACE/dev/node && mv $WORKSPACE/dev/node $WORKSPACE/dev/node.old; wget -O - https://nodejs.org/dist/$version/node-$version-linux-x64.tar.xz | tar -Jxvf - -C $WORKSPACE/dev && rm -rf node && mv $WORKSPACE/dev/node-$version-linux-x64 $WORKSPACE/dev/node
 "   ln -s $WORKSPACE/dev/node/bin/node $WORKSPACE/bin && ln -s $WORKSPACE/dev/node/bin/npm $WORKSPACE/bin && ln -s $WORKSPACE/dev/node/bin/npx $WORKSPACE/bin
 "   ```
 "
@@ -127,6 +127,8 @@ Plugin 'hunterzju/mlir-vim'
 
 " All of your Plugins must be added before the following line
 call vundle#end()
+
+call glaive#Install()
 
 let g:material_theme_style = 'darker'
 colorscheme material
@@ -234,7 +236,7 @@ let g:airline_section_z = airline#section#create(['linenr', 'maxlinenr', '%4(%c%
 " vim-airline/vim-airline end
 
 " google/vim-codefmt begin
-let g:codefmt#js_beautify_executable = "js-beautify -s 2"
+Glaive codefmt js_beautify_executable='js_beautify_1'
 
 au BufRead,BufNewFile *.mlir set filetype=mlir
 autocmd FileType c,cpp,proto let b:codefmt_formatter = "clang-format"

@@ -3,8 +3,9 @@
 # export PATH=$HOME/bin:/usr/local/bin:$PATH
 source /etc/profile
 
-export LC_ALL=C.UTF-8
-export LANG=C.UTF-8
+export LC_ALL=en_US.UTF-8
+export LANG=en_US.UTF-8
+export DISABLE_AUTO_TITLE="true"
 
 # sudo apt install zsh
 # sh -c "$(curl -fsSL https://raw.github.com/ohmyzsh/ohmyzsh/master/tools/install.sh)"
@@ -190,6 +191,15 @@ fzf_find_and_vim_open() {
 }
 zle     -N   fzf_find_and_vim_open
 bindkey '^n' fzf_find_and_vim_open
+
+fzf_find_and_dvim_open() {
+  local file
+  file=$(find . -type f | fzf --height 50% --reverse --exact --preview 'cat {}' || return)
+  [[ -f $file ]] && dvim "$file"
+  zle reset-prompt
+}
+zle     -N   fzf_find_and_dvim_open
+bindkey '^!n' fzf_find_and_dvim_open
 
 fzf_history() {
   local command

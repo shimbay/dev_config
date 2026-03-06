@@ -1,25 +1,37 @@
 #! /bin/bash
 
 t=0
+f=""
+name_only=0
 commit=""
-while getopts "mrc:" option; do
+while getopts "mrlc:f:" option; do
   case ${option} in
     m) t=1 ;;
     r) t=2 ;;
     c) t=3; commit=$OPTARG ;;
+    l) name_only=1 ;;
+    f) f=$OPTARG ;;
   esac
 done
 
+extra_param=""
+if test ${name_only} -eq 1; then
+  extra_param="${extra_param} --name-only"
+fi
+if ! test -z ${f}; then
+  extra_param="${extra_param} ${f}"
+fi
+
 if test $t -eq 0; then
-  git difftool
+  git difftool ${extra_param}
 elif test $t -eq 1; then
   base=$(git merge-base HEAD master)
-  git difftool $base
+  git difftool $base ${extra_param}
 elif test $t -eq 2; then
   base=$(git for-each-ref --format='%(upstream:short)' $(git symbolic-ref -q HEAD))
-  git difftool $base
+  git difftool $base ${extra_param}
 elif test $t -eq 3; then
-  git difftool $commit
+  git difftool $commit ${extra_param}
 else
   echo "unknown diff type"
   exit 1

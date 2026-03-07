@@ -5,7 +5,6 @@ source /etc/profile
 
 export LC_ALL=en_US.UTF-8
 export LANG=en_US.UTF-8
-export DISABLE_AUTO_TITLE="true"
 
 # sudo apt install zsh
 # sh -c "$(curl -fsSL https://raw.github.com/ohmyzsh/ohmyzsh/master/tools/install.sh)"

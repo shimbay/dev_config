@@ -23,14 +23,14 @@
 "   ```
 "   https://github.com/junegunn/fzf/releases
 "
-"   version="0.68.0"; wget -O - https://github.com/junegunn/fzf/releases/download/v$version/fzf-$version-linux_amd64.tar.gz | tar -zxvf - -C $WORKSPACE/bin
+"   version="0.70.0"; wget -O - https://github.com/junegunn/fzf/releases/download/v$version/fzf-$version-linux_amd64.tar.gz | tar -zxvf - -C $WORKSPACE/bin
 "   ```
 "
 " - go
 "   ```
 "   https://go.dev/dl/
 "
-"   version=1.25.7; rm -rf $WORKSPACE/dev/go.old; test -d $WORKSPACE/dev/go && mv $WORKSPACE/dev/go $WORKSPACE/dev/go.old; wget -O - https://go.dev/dl/go$version.linux-amd64.tar.gz | tar -zxvf - -C $WORKSPACE/dev
+"   version=1.26.1; rm -rf $WORKSPACE/dev/go.old; test -d $WORKSPACE/dev/go && mv $WORKSPACE/dev/go $WORKSPACE/dev/go.old; wget -O - https://go.dev/dl/go$version.linux-amd64.tar.gz | tar -zxvf - -C $WORKSPACE/dev
 "   ln -s $WORKSPACE/dev/go $WORKSPACE/bin
 "   ```
 "
@@ -51,7 +51,7 @@
 "   ```
 "   https://nodejs.org/en/download
 "
-"   version=v24.14.0; rm -rf $WORKSPACE/dev/node.old; test -d $WORKSPACE/dev/node && mv $WORKSPACE/dev/node $WORKSPACE/dev/node.old; wget -O - https://nodejs.org/dist/$version/node-$version-linux-x64.tar.xz | tar -Jxvf - -C $WORKSPACE/dev && rm -rf node && mv $WORKSPACE/dev/node-$version-linux-x64 $WORKSPACE/dev/node
+"   version=v24.14.1; rm -rf $WORKSPACE/dev/node.old; test -d $WORKSPACE/dev/node && mv $WORKSPACE/dev/node $WORKSPACE/dev/node.old; wget -O - https://nodejs.org/dist/$version/node-$version-linux-x64.tar.xz | tar -Jxvf - -C $WORKSPACE/dev && rm -rf node && mv $WORKSPACE/dev/node-$version-linux-x64 $WORKSPACE/dev/node
 "   ln -s $WORKSPACE/dev/node/bin/node $WORKSPACE/bin && ln -s $WORKSPACE/dev/node/bin/npm $WORKSPACE/bin && ln -s $WORKSPACE/dev/node/bin/npx $WORKSPACE/bin
 "   ```
 "

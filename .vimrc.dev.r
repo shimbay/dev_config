@@ -210,7 +210,7 @@ autocmd User CocStatusChange redraws
 
 " vim-airline/vim-airline begin
 let g:airline#extensions#default#layout = [
-      \ [ 'a', 'c' ],
+      \ [ 'a', 'c', 'x' ],
       \ [ 'z']
       \ ]
 let g:airline_mode_map = {
@@ -233,6 +233,8 @@ let g:airline_mode_map = {
     \ 'V'      : 'V',
     \ ''     : 'V',
     \ }
+let g:airline#extensions#tabline#enabled = 1
+let g:airline#extensions#tagbar#enabled = 0
 let g:airline_section_z = airline#section#create(['linenr', 'maxlinenr', '%4(%c%V%)'])
 " vim-airline/vim-airline end
 

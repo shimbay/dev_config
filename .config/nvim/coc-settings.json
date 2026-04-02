@@ -1,6 +1,7 @@
 {
   "semanticTokens.enable": true,
   "semanticTokens.filetypes": ["*"],
+  "coc.preferences.currentFunctionSymbolAutoUpdate": true,
   "clangd.enabled": true,
   "clangd.path": "$WORKSPACE/bin/llvm/bin/clangd",
   "clangd.arguments": [

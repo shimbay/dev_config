@@ -68,7 +68,7 @@
 "
 "   ln -s ${WORKSPACE}/dev/llvm ${WORKSPACE}/bin/llvm
 "   ```
-" 
+"
 " - vim plugin
 "   ```
 "   vim
@@ -97,6 +97,13 @@
 "   :GoInstallBinaries
 "   :GoUpdateBinaries
 "   ```
+"
+" - v2ray
+"   ```
+"   https://github.com/v2rayA/v2rayA/releases
+"   https://github.com/v2fly/v2ray-core/releases
+"   ```
+"
 
 set rtp+=~/.vim/bundle/Vundle.vim
 
@@ -104,6 +111,7 @@ set rtp+=~/.vim/bundle/Vundle.vim
 call vundle#begin()
 
 Plugin 'airblade/vim-gitgutter'
+Plugin 'Chiel92/vim-autoformat'
 Plugin 'ekalinin/Dockerfile.vim'
 Plugin 'fatih/vim-go'
 Plugin 'google/vim-codefmt'
@@ -112,6 +120,7 @@ Plugin 'google/vim-glaive'
 Plugin 'jiangmiao/auto-pairs'
 Plugin 'kaicataldo/material.vim'
 Plugin 'neoclide/coc.nvim'
+Plugin 'nvim-treesitter/nvim-treesitter'
 Plugin 'preservim/tagbar'
 Plugin 'puremourning/vimspector'
 Plugin 'scrooloose/nerdtree'
@@ -143,7 +152,7 @@ highlight Normal guibg=#151515
 
 " help coc-config-semanticTokens-enable
 " help CocSem
- 
+
 " clangd`s symbol link bug: https://github.com/clangd/clangd/issues/503
 "
 " CocSemTypeMod + type + modifier
@@ -184,11 +193,11 @@ map <C-f> :CocList -A -I grep<CR>
 map <leader>hi :CocCommand semanticTokens.inspect<CR>
 
 inoremap <silent><expr> <TAB>
-  \ coc#pum#visible() ? coc#_select_confirm() :
-  \ coc#expandableOrJumpable() ?
-  \ "\<C-r>=coc#rpc#request('doKeymap', ['snippets-expand-jump',''])\<CR>" :
-  \ CheckBackSpace() ? "\<TAB>" :
-  \ coc#refresh()
+      \ coc#pum#visible() ? coc#_select_confirm() :
+      \ coc#expandableOrJumpable() ?
+      \ "\<C-r>=coc#rpc#request('doKeymap', ['snippets-expand-jump',''])\<CR>" :
+      \ CheckBackSpace() ? "\<TAB>" :
+      \ coc#refresh()
 
 function! CheckBackSpace() abort
   let col = col('.') - 1
@@ -210,29 +219,29 @@ autocmd User CocStatusChange redraws
 
 " vim-airline/vim-airline begin
 let g:airline#extensions#default#layout = [
-      \ [ 'a', 'c', 'x' ],
-      \ [ 'z']
+      \ [ 'a', 'x' ],
+      \ [ 'c', 'z']
       \ ]
 let g:airline_mode_map = {
-    \ '__'     : '-',
-    \ 'c'      : 'C',
-    \ 'i'      : 'I',
-    \ 'ic'     : 'I',
-    \ 'ix'     : 'I',
-    \ 'n'      : 'N',
-    \ 'multi'  : 'M',
-    \ 'ni'     : 'N',
-    \ 'no'     : 'N',
-    \ 'R'      : 'R',
-    \ 'Rv'     : 'R',
-    \ 's'      : 'S',
-    \ 'S'      : 'S',
-    \ ''     : 'S',
-    \ 't'      : 'T',
-    \ 'v'      : 'V',
-    \ 'V'      : 'V',
-    \ ''     : 'V',
-    \ }
+      \ '__'     : '-',
+      \ 'c'      : 'C',
+      \ 'i'      : 'I',
+      \ 'ic'     : 'I',
+      \ 'ix'     : 'I',
+      \ 'n'      : 'N',
+      \ 'multi'  : 'M',
+      \ 'ni'     : 'N',
+      \ 'no'     : 'N',
+      \ 'R'      : 'R',
+      \ 'Rv'     : 'R',
+      \ 's'      : 'S',
+      \ 'S'      : 'S',
+      \ ''     : 'S',
+      \ 't'      : 'T',
+      \ 'v'      : 'V',
+      \ 'V'      : 'V',
+      \ ''     : 'V',
+      \ }
 let g:airline#extensions#tabline#enabled = 1
 let g:airline#extensions#tagbar#enabled = 0
 let g:airline_section_z = airline#section#create(['linenr', 'maxlinenr', '%4(%c%V%)'])
@@ -281,22 +290,22 @@ let g:NERDTreeShowHidden = 1
 let g:NERDTreeShowLineNumbers = 0
 let g:NERDTreeWinSize = 35
 let g:NERDTreeWinPos = "left"
-" nerdtree end 
+" nerdtree end
 
 " Xuyuanp/nerdtree-git-plugin begin
 let g:NERDTreeGitStatusShowIgnored = 1
 let g:NERDTreeGitStatusIndicatorMapCustom = {
-  \ "Modified"  : "✹",
-  \ "Staged"    : "✚",
-  \ "Untracked" : "✭",
-  \ "Renamed"   : "➜",
-  \ "Unmerged"  : "═",
-  \ "Deleted"   : "✖",
-  \ "Dirty"     : "✗",
-  \ "Clean"     : "✔︎",
-  \ 'Ignored'   : '☒',
-  \ "Unknown"   : "?"
-  \ }
+      \ "Modified"  : "✹",
+      \ "Staged"    : "✚",
+      \ "Untracked" : "✭",
+      \ "Renamed"   : "➜",
+      \ "Unmerged"  : "═",
+      \ "Deleted"   : "✖",
+      \ "Dirty"     : "✗",
+      \ "Clean"     : "✔︎",
+      \ 'Ignored'   : '☒',
+      \ "Unknown"   : "?"
+      \ }
 " Xuyuanp/nerdtree-git-plugin end
 
 " vim-nerdtree-tabs begin
@@ -318,108 +327,108 @@ let g:tagbar_map_preview = 'o'
 let g:tagbar_map_jump = 'O'
 let g:tagbar_map_togglefold = 'f'
 let g:tagbar_type_go = {
-  \ 'ctagstype' : 'go',
-  \ 'kinds' : [
-    \ 'p:package',
-    \ 'i:imports:0',
-    \ 'c:constants',
-    \ 'v:variables',
-    \ 't:types',
-    \ 'n:interfaces',
-    \ 'w:fields',
-    \ 'e:embedded',
-    \ 'm:methods',
-    \ 'r:constructor',
-    \ 'f:functions'
-  \ ],
-  \ 'sro' : '.',
-  \ 'kind2scope' : {
-    \ 't' : 'ctype',
-    \ 'n' : 'ntype'
-  \ },
-  \ 'scope2kind' : {
-    \ 'ctype' : 't',
-    \ 'ntype' : 'n'
-  \ },
-  \ 'ctagsbin' : 'gotags',
-  \ 'ctagsargs' : '-sort -silent'
-\ }
+      \ 'ctagstype' : 'go',
+      \ 'kinds' : [
+      \ 'p:package',
+      \ 'i:imports:0',
+      \ 'c:constants',
+      \ 'v:variables',
+      \ 't:types',
+      \ 'n:interfaces',
+      \ 'w:fields',
+      \ 'e:embedded',
+      \ 'm:methods',
+      \ 'r:constructor',
+      \ 'f:functions'
+      \ ],
+      \ 'sro' : '.',
+      \ 'kind2scope' : {
+      \ 't' : 'ctype',
+      \ 'n' : 'ntype'
+      \ },
+      \ 'scope2kind' : {
+      \ 'ctype' : 't',
+      \ 'ntype' : 'n'
+      \ },
+      \ 'ctagsbin' : 'gotags',
+      \ 'ctagsargs' : '-sort -silent'
+      \ }
 
 let g:tagbar_type_cpp = {
-  \ 'ctagstype' : 'c++',
-  \ 'kinds' : [
-    \ 'd:macros:1:0',
-    \ 'p:prototypes:1:0',
-    \ 'g:enums',
-    \ 'e:enumerators:0:0',
-    \ 't:typedefs:0:0',
-    \ 'n:namespaces',
-    \ 'c:classes',
-    \ 's:structs',
-    \ 'u:unions',
-    \ 'f:functions',
-    \ 'm:members:0:0',
-    \ 'v:variables:0:0'
-  \ ],
-  \ 'sro' : '::',
-  \ 'kind2scope' : {
-    \ 'g' : 'enum',
-    \ 'n' : 'namespace',
-    \ 'c' : 'class',
-    \ 's' : 'struct',
-    \ 'u' : 'union'
-  \ },
-  \ 'scope2kind' : {
-    \ 'enum' : 'g',
-    \ 'namespace' : 'n',
-    \ 'class' : 'c',
-    \ 'struct' : 's',
-    \ 'union' : 'u'
-  \ }
-\ }
+      \ 'ctagstype' : 'c++',
+      \ 'kinds' : [
+      \ 'd:macros:1:0',
+      \ 'p:prototypes:1:0',
+      \ 'g:enums',
+      \ 'e:enumerators:0:0',
+      \ 't:typedefs:0:0',
+      \ 'n:namespaces',
+      \ 'c:classes',
+      \ 's:structs',
+      \ 'u:unions',
+      \ 'f:functions',
+      \ 'm:members:0:0',
+      \ 'v:variables:0:0'
+      \ ],
+      \ 'sro' : '::',
+      \ 'kind2scope' : {
+      \ 'g' : 'enum',
+      \ 'n' : 'namespace',
+      \ 'c' : 'class',
+      \ 's' : 'struct',
+      \ 'u' : 'union'
+      \ },
+      \ 'scope2kind' : {
+      \ 'enum' : 'g',
+      \ 'namespace' : 'n',
+      \ 'class' : 'c',
+      \ 'struct' : 's',
+      \ 'union' : 'u'
+      \ }
+      \ }
 
 let g:tagbar_use_cache = 0
 let g:rust_use_custom_ctags_defs = 1
 let g:tagbar_type_rust = {
-  \ 'ctagstype' : 'rust',
-  \ 'kinds' : [
-    \ 'n:modules',
-    \ 's:structures:1',
-    \ 'i:interfaces',
-    \ 'c:implementations',
-    \ 'f:functions:1',
-    \ 'g:enumerations:1',
-    \ 't:type aliases:1:0',
-    \ 'v:constants:1:0',
-    \ 'M:macros:1',
-    \ 'm:fields:1:0',
-    \ 'e:enum variants:1:0',
-    \ 'P:methods:1',
-  \ ],
-  \ 'sro': '::',
-  \ 'kind2scope' : {
-    \ 'n': 'module',
-    \ 's': 'struct',
-    \ 'i': 'interface',
-    \ 'c': 'implementation',
-    \ 'f': 'function',
-    \ 'g': 'enum',
-    \ 't': 'typedef',
-    \ 'v': 'variable',
-    \ 'M': 'macro',
-    \ 'm': 'field',
-    \ 'e': 'enumerator',
-    \ 'P': 'method',
-  \ },
-\ }
+      \ 'ctagstype' : 'rust',
+      \ 'kinds' : [
+      \ 'n:modules',
+      \ 's:structures:1',
+      \ 'i:interfaces',
+      \ 'c:implementations',
+      \ 'f:functions:1',
+      \ 'g:enumerations:1',
+      \ 't:type aliases:1:0',
+      \ 'v:constants:1:0',
+      \ 'M:macros:1',
+      \ 'm:fields:1:0',
+      \ 'e:enum variants:1:0',
+      \ 'P:methods:1',
+      \ ],
+      \ 'sro': '::',
+      \ 'kind2scope' : {
+      \ 'n': 'module',
+      \ 's': 'struct',
+      \ 'i': 'interface',
+      \ 'c': 'implementation',
+      \ 'f': 'function',
+      \ 'g': 'enum',
+      \ 't': 'typedef',
+      \ 'v': 'variable',
+      \ 'M': 'macro',
+      \ 'm': 'field',
+      \ 'e': 'enumerator',
+      \ 'P': 'method',
+      \ },
+      \ }
 " preservim/tagbar end
 
 " tpope/vim-fugitive begin
 nnoremap <silent> <leader>gs :Git!<CR>
 nnoremap <silent> <leader>gl :Git log<CR>
 nnoremap <silent> <leader>gd :Gvdiffsplit!<CR>
-nnoremap <leader>gD :Gvdiffsplit! 
-nnoremap <silent> \\ :diffget<CR> 
+nnoremap <leader>gD :Gvdiffsplit!
+nnoremap <silent> \\ :diffget<CR>
 nnoremap <silent> <leader>gb :Git blame<CR>
 " tpope/vim-fugitive end
 
@@ -430,10 +439,10 @@ nnoremap <silent> <leader>mc :Dox<CR>
 nnoremap <silent> <leader>ma gg \| :DoxAuthor<CR>
 " vim-scripts/DoxygenToolkit.vim end
 
-" vim-go begin 
+" vim-go begin
 nnoremap <silent> <leader>o :GoImports<CR>
 
-let g:go_highlight_structs = 1 
+let g:go_highlight_structs = 1
 let g:go_highlight_methods = 1
 let g:go_highlight_functions = 1
 let g:go_highlight_operators = 1
@@ -475,10 +484,10 @@ let g:vimspector_console_max_lines = 0
 let g:vimspector_terminal_maxwidth = 50
 let g:vimspector_bottombar_height = 0
 let g:vimspector_settings = {
-    \ 'showInternalConsole': 0,
-    \ 'consoleHeight': 0,
-    \ 'consoleVisible': 0
-    \ }
+      \ 'showInternalConsole': 0,
+      \ 'consoleHeight': 0,
+      \ 'consoleVisible': 0
+      \ }
 
 autocmd User VimspectorUICreated silent! bdelete! Console[0]
 
@@ -487,6 +496,7 @@ nmap , :call vimspector#Launch()<CR>
 nmap <S-F4> :call vimspector#Restart()<CR>
 nmap <F4> :call vimspector#Reset()<CR>
 nmap 4 :call vimspector#Reset()<CR>
+nmap <S-4> :call vimspector#Restart()<CR>
 
 nmap <F5> <Plug>VimspectorToggleBreakpoint
 nmap 5 <Plug>VimspectorToggleBreakpoint
@@ -501,6 +511,103 @@ nmap <F9> <Plug>VimspectorContinue
 nmap 9 <Plug>VimspectorContinue
 nmap <F10> <Plug>VimspectorRunToCursor
 nmap <S-9> <Plug>VimspectorRunToCursor
+
+let g:vimspector_sidebar_width = 50
+let g:vimspector_terminal_win = -1
+let g:vimspector_refresh_timer = -1
+
+function! VimspectorCurrentWindowType() abort
+  if !exists('g:vimspector_session_windows')
+    return ''
+  endif
+
+  let cur = win_getid()
+
+  for [name, winid] in items(g:vimspector_session_windows)
+    if winid == cur
+      return name
+    endif
+  endfor
+
+  return ''
+endfunction
+
+" g:vimspector_session_windows.code
+" g:vimspector_session_windows.variables
+" g:vimspector_session_windows.watches
+" g:vimspector_session_windows.stack_trace
+" g:vimspector_session_windows.output
+" g:vimspector_session_windows.console
+" g:vimspector_session_windows.terminal
+
+augroup MyVimspector
+  autocmd!
+  autocmd User VimspectorUICreated call s:VimspectorLayout()
+  autocmd User VimspectorDebugEnded call s:VimspectorDebugEnd()
+  autocmd User VimspectorTerminalOpened call s:VimspectorTerminalOpened()
+augroup END
+
+function! s:VimspectorLayout() abort
+  let wins = g:vimspector_session_windows
+
+  for buf in getbufinfo()
+    if get(buf, 'name', '') =~# 'vimspector\.Console'
+      execute 'silent! bwipeout!' buf.bufnr
+    endif
+  endfor
+
+  let g:vimspector_refresh_timer = timer_start(
+        \ 200,
+        \ { -> s:RefreshWindow() },
+        \ {'repeat': -1}
+        \ )
+endfunction
+
+function! s:RefreshWindow() abort
+  if g:vimspector_terminal_win == -1
+    return
+  endif
+
+  call win_execute(g:vimspector_terminal_win, 'normal! G')
+  call win_execute(g:vimspector_terminal_win, 'redraw')
+endfunction
+
+function! s:VimspectorDebugEnd() abort
+  if g:vimspector_refresh_timer != -1
+    call timer_stop(g:vimspector_refresh_timer)
+    let g:vimspector_refresh_timer = -1
+  endif
+
+  if g:vimspector_terminal_win != -1
+    let g:vimspector_terminal_win = -1
+  endif
+endfunction
+
+function! s:VimspectorTerminalOpened() abort
+  let wins = g:vimspector_session_windows
+
+  call win_gotoid(wins.terminal)
+  let term_buf = bufnr('%')
+  silent! close
+
+  if g:vimspector_terminal_win == -1
+    call win_gotoid(wins.code)
+    belowright split
+    resize 8
+    let g:vimspector_terminal_win = win_getid()
+  else
+    call win_gotoid(g:vimspector_terminal_win)
+  endif
+  execute 'buffer' term_buf
+
+  for key in ['variables', 'watches', 'stack_trace']
+    if has_key(wins, key)
+      call win_execute(wins[key], printf('vertical resize %d', g:vimspector_sidebar_width))
+    endif
+  endfor
+
+  call win_gotoid(wins.code)
+endfunction
 
 packadd! vimspector
 " puremourning/vimspector end

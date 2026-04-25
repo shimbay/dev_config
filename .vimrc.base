@@ -16,7 +16,7 @@
 "   sudo make install
 "   ```
 "
-" - nvim setup 
+" - nvim setup
 "   ```
 "   mkdir -p $HOME/.vim/backup $HOME/.vim/swap $HOME/.vim/undo $HOME/.vim/pack
 "   ```
@@ -33,11 +33,11 @@ set mouse=
 set nu
 set wrap
 augroup NoWrap
-    autocmd!
-    autocmd FileType proto setlocal nowrap
-    autocmd FileType json setlocal nowrap
-    autocmd FileType jsonc setlocal nowrap
-    autocmd FileType rst setlocal nowrap
+  autocmd!
+  autocmd FileType proto setlocal nowrap
+  autocmd FileType json setlocal nowrap
+  autocmd FileType jsonc setlocal nowrap
+  autocmd FileType rst setlocal nowrap
 augroup END
 set termguicolors
 set noro
@@ -81,13 +81,13 @@ endif
 if has("autocmd")
   au VimEnter,InsertLeave * silent execute '!echo -ne "\e[2 q"' | redraw!
   au InsertEnter,InsertChange *
-    \ if v:insertmode == 'i' |
-    \   silent execute '!echo -ne "\e[6 q"' | redraw! |
-    \ elseif v:insertmode == 'r' |
-    \   silent execute '!echo -ne "\e[4 q"' | redraw! |
-    \ elseif v:insertmode == 't' |
-    \   silent execute '!echo -ne "\e[4 q"' | redraw! |
-    \ endif
+        \ if v:insertmode == 'i' |
+        \   silent execute '!echo -ne "\e[6 q"' | redraw! |
+        \ elseif v:insertmode == 'r' |
+        \   silent execute '!echo -ne "\e[4 q"' | redraw! |
+        \ elseif v:insertmode == 't' |
+        \   silent execute '!echo -ne "\e[4 q"' | redraw! |
+        \ endif
   au VimLeave * silent execute '!echo -ne "\e[ q"' | redraw!
 endif
 
@@ -113,7 +113,25 @@ noremap e @a
 xmap r S
 noremap <silent> q :close<CR>
 noremap <silent> Q :qa<CR>
-noremap <expr> <leader>e WinZoom()
+
+let g:zoomed = 0
+let s:win_layout = ''
+
+function! ToggleWinZoom() abort
+  if !g:zoomed
+    let s:win_layout = winrestcmd()
+
+    resize
+    vertical resize
+
+    let g:zoomed = 1
+  else
+    execute s:winlayout
+    let g:zoomed = 0
+  endif
+endfunction
+
+nnoremap <leader>e :call ToggleWinZoom()<CR>
 
 nnoremap u :undo<CR>
 nnoremap U :redo<CR>

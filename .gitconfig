@@ -27,6 +27,8 @@
 	autoSetupRemote = true
 [safe]
 	directory = /data/xuxinran/dinov2
+	directory = /data/chenwenhao/projects/tmp/shared/npu-codebase
+	directory = /data/chenwenhao/projects/npu-codebase
 
 [tig "bind"]
   generic = D !git difftool --tool=vimdiff --no-prompt --trust-exit-code %(commit)^!

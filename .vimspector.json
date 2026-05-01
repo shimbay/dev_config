@@ -23,7 +23,7 @@
         }
     },
     "configurations": {
-        "C/C++": {
+        "1. C/C++": {
             "adapter": "vscode-cpptools",
             "configuration": {
                 "request": "launch",
@@ -48,7 +48,7 @@
                 }]
             }
         },
-        "C/C++ Remote Launch": {
+        "2. C/C++ Remote Launch": {
             "adapter": "cpptools-remote",
             "remote-cmdLine": ["/path/to/remove/binary"],
             "remote-request": "launch",
@@ -62,18 +62,45 @@
                 "miDebuggerAddress": "debug:${port}"
             }
         },
-        "Python": {
+        "3. Python": {
             "adapter": "debugpy",
             "configuration": {
-                // use python3 in current environment
+                "request": "launch",
                 "python": "python3",
+                "type": "python",
+                "cwd": "${workspaceRoot}",
+                "program": "${workspaceRoot}/to/py",
+                "args": [
+                    "-s"
+                ],
+                "env": {
+                  "ENV": "1"
+                },
+                "stopOnEntry": true,
+                "console": "integratedTerminal",
+                "justMyCode": false
+            },
+            "breakpoints": {
+                "exception": {
+                    "raised": "N",
+                    "uncaught": "",
+                    "userUnhandled": ""
+                }
+            }
+        },
+        "4. Python Module": {
+            "adapter": "debugpy",
+            "configuration": {
                 "request": "launch",
                 "type": "python",
                 "cwd": "${workspaceRoot}",
-                // "program": "${workspaceRoot}/main.py",
-                "module": "main",
-                "args": [],
-                "environment": [],
+                "module": "pytest",
+                "args": [
+                    "-s"
+                ],
+                "env": {
+                  "ENV": "1"
+                },
                 "stopOnEntry": true,
                 "console": "integratedTerminal",
                 "justMyCode": false
